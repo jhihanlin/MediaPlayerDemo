@@ -49,7 +49,7 @@ public class MediaPlayerControlView extends FrameLayout {
 	public void setAnchorView(ViewGroup view) {
 		if (mAnchor != null) {
 			mAnchor.removeView(this);
-			Log.d("deubg", "removeView!!!!");
+			Log.d("debug", "removeView!!!!");
 		}
 		mAnchor = view;
 
@@ -84,7 +84,7 @@ public class MediaPlayerControlView extends FrameLayout {
 	public void show() {
 		if (mAnchor != null) {
 			mAnchor.removeView(this);
-			Log.d("deubg", "removeView!!!!");
+			Log.d("debug", "removeView!!!!");
 		}
 		if (mPauseButton != null) {
 			mPauseButton.requestFocus();

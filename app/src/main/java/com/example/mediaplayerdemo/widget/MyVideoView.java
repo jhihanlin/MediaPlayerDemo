@@ -40,9 +40,10 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     public int mCurrentState = STATE_IDLE;
     public int mTargetState = STATE_IDLE;
 
+    private boolean autoPlay = false;
+
     private SurfaceHolder mSurfaceHolder = null;
     private MediaPlayer mediaPlayer;
-    private ImageButton playButton;
     private MediaPlayerControlView controller;
     private Context context;
     private FrameLayout anchorView;
@@ -78,6 +79,10 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         controller.setMediaPlayer(this);
         controller.setAnchorView(anchorView);
         Log.d("debug", "mCurrentState:PREPARED!");
+
+        if (autoPlay) {
+            start();
+        }
     }
 
     @Override
@@ -151,7 +156,6 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
             Log.d("debug", "MediaPlayer start!");
 
             mCurrentState = STATE_PLAYING;
-            playButton.setVisibility(View.INVISIBLE);
             Log.d("debug", "mCurrentState:PLAYING!");
         }
         mTargetState = STATE_PLAYING;
@@ -175,7 +179,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
                 mediaPlayer.reset();
                 mediaPlayer.release();
                 mediaPlayer = null;
-                Log.d("debug", "mediaPlayer is relese!");
+                Log.d("debug", "mediaPlayer is release!");
 
                 if (cleartargetstate) {
                     mCurrentState = STATE_IDLE;
@@ -283,7 +287,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         this.anchorView = anchorView;
     }
 
-    public void setPlayButton(ImageButton playButton) {
-        this.playButton = playButton;
+    public void autoPlay() {
+        autoPlay = true;
     }
 }

@@ -16,8 +16,8 @@ public class MediaPlayerActivity extends Activity {
 
     private View.OnClickListener mOnclickListener = new View.OnClickListener() {
         public void onClick(View v) {
-            Log.d("debug", "click paly!");
-            myVideoView.start();
+            myVideoView.autoPlay();
+            playButton.setVisibility(View.GONE);
         }
     };
 
@@ -32,7 +32,6 @@ public class MediaPlayerActivity extends Activity {
 
         myVideoView = (MyVideoView) findViewById(R.id.surface_media_player);
         myVideoView.setAnchorView((android.widget.FrameLayout) findViewById(R.id.surface_container));
-        myVideoView.setPlayButton(playButton);
 	}
 
 }
