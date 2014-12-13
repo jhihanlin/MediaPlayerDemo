@@ -12,37 +12,27 @@ import android.widget.ImageButton;
 public class MediaPlayerActivity extends Activity {
 
 	private ImageButton playButton;
+    private MyVideoView myVideoView;
 
     private View.OnClickListener mOnclickListener = new View.OnClickListener() {
         public void onClick(View v) {
             Log.d("debug", "click paly!");
-            start();
+            myVideoView.start();
         }
     };
-    private MyVideoView myVideoView;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_surface_media_player);
 
-		myVideoView = (MyVideoView) findViewById(R.id.surface_media_player);
-		playButton = (ImageButton) findViewById(R.id.playButton);
 
+        playButton = (ImageButton) findViewById(R.id.playButton);
 		playButton.setOnClickListener(mOnclickListener);
+
+        myVideoView = (MyVideoView) findViewById(R.id.surface_media_player);
+        myVideoView.setAnchorView((android.widget.FrameLayout) findViewById(R.id.surface_container));
+        myVideoView.setPlayButton(playButton);
 	}
-
-    public void start() {
-        Log.d("debug", "mCurrentState" + myVideoView.mCurrentState);
-        if (myVideoView.isInPlaybackState()) {
-            myVideoView.mediaPlayer.start();
-            Log.d("debug", "MediaPlayer start!");
-
-            myVideoView.mCurrentState = MyVideoView.STATE_PLAYING;
-            playButton.setVisibility(View.INVISIBLE);
-            Log.d("debug", "mCurrentState:PLAYING!");
-        }
-        myVideoView.mTargetState = MyVideoView.STATE_PLAYING;
-    }
 
 }

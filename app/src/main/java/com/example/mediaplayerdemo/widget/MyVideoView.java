@@ -7,10 +7,10 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
@@ -32,7 +32,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     private static final int STATE_IDLE = 0;
     private static final int STATE_PREPARING = 1;
     private static final int STATE_PREPARED = 2;
-    public static final int STATE_PLAYING = 3;
+    private static final int STATE_PLAYING = 3;
     private static final int STATE_PAUSED = 4;
     private static final int STATE_PLAYBACK_COMPLETED = 5;
 
@@ -41,10 +41,12 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     public int mTargetState = STATE_IDLE;
 
     private SurfaceHolder mSurfaceHolder = null;
-    public MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
     private ImageButton playButton;
     private MediaPlayerControlView controller;
     private Context context;
+    private FrameLayout anchorView;
+
 
     public MyVideoView(Context context) {
         super(context);
@@ -75,18 +77,18 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         mTargetState = STATE_PREPARED;
         Log.d("debug", "mCurrentState:PREPARED!");
         controller.setMediaPlayer(this);
-        controller.setAnchorView((FrameLayout) findViewById(R.id.surface_container));
+//        controller.setAnchorView((FrameLayout) findViewById(R.id.surface_container));
     }
 
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.d("debug", "onTouch");
+        controller.setAnchorView(anchorView);
         controller.show();
         pause();
         return false;
 
     }
-
-    ;
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
@@ -275,5 +277,13 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         if (mediaPlayer != null) {
             // mediaPlayer.hide();
         }
+    }
+
+    public void setAnchorView(FrameLayout anchorView) {
+        this.anchorView = anchorView;
+    }
+
+    public void setPlayButton(ImageButton playButton) {
+        this.playButton = playButton;
     }
 }
