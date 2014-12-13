@@ -6,15 +6,11 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
+import android.widget.MediaController;
 
-import com.example.mediaplayerdemo.R;
 import com.example.mediaplayerdemo.controller.MediaPlayerControlView;
 
 import java.io.IOException;
@@ -25,7 +21,7 @@ import java.io.IOException;
 public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener,
         MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener,
-        MediaPlayer.OnInfoListener, MediaPlayerControlView.MediaPlayerControl {
+        MediaPlayer.OnInfoListener, MediaController.MediaPlayerControl {
 
     // all possible internal states
     private static final int STATE_ERROR = -1;
@@ -44,7 +40,6 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
 
     private SurfaceHolder mSurfaceHolder = null;
     private MediaPlayer mediaPlayer;
-    private MediaPlayerControlView controller;
     private Context context;
     private FrameLayout anchorView;
 
@@ -69,30 +64,17 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         mediaPlayer = new MediaPlayer();
         SurfaceHolder videoHolder = this.getHolder();
         videoHolder.addCallback(this);
-        controller = new MediaPlayerControlView(context);
     }
 
     @Override
     public void onPrepared(MediaPlayer mp) {
         mCurrentState = STATE_PREPARED;
         mTargetState = STATE_PREPARED;
-        controller.setMediaPlayer(this);
-        controller.setAnchorView(anchorView);
         Log.d("debug", "mCurrentState:PREPARED!");
 
         if (autoPlay) {
             start();
         }
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Log.d("debug", "onTouch");
-        pause();
-        controller.show();
-        controller.updatePausePlay();
-        return false;
-
     }
 
     @Override
@@ -173,7 +155,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         mTargetState = STATE_PAUSED;
     }
 
-    public void release(boolean cleartargetstate) {
+    private void release(boolean cleartargetstate) {
         try {
             if (mediaPlayer != null) {
                 mediaPlayer.reset();
@@ -241,17 +223,9 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     @Override
-    public boolean isFullScreen() {
-        // TODO Auto-generated method stub
-        return false;
+    public int getAudioSessionId() {
+        return 0;
     }
-
-    @Override
-    public void toggleFullScreen() {
-        // TODO Auto-generated method stub
-
-    }
-
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
@@ -283,11 +257,11 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
-    public void setAnchorView(FrameLayout anchorView) {
-        this.anchorView = anchorView;
-    }
-
     public void autoPlay() {
         autoPlay = true;
+    }
+
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
     }
 }

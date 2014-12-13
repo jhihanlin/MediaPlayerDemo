@@ -1,160 +1,135 @@
 package com.example.mediaplayerdemo.controller;
 
-import com.example.mediaplayerdemo.R;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
+
+import com.example.mediaplayerdemo.R;
+import com.example.mediaplayerdemo.widget.MyVideoView;
 
 public class MediaPlayerControlView extends FrameLayout {
-	private MediaPlayerControl mPlayer;
-	private Context mContext;
-	private View mRoot;
-	private ImageButton mPauseButton;
-	private ViewGroup mAnchor;
 
-	public MediaPlayerControlView(Context context) {
-		super(context);
-		mContext = context;
-	}
+    private Context mContext;
+    private View mRoot;
+    private ImageButton mPauseButton;
+    private MyVideoView myVideoView;
+    private SeekBar mSeekBar;
 
-	public MediaPlayerControlView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		mRoot = null;
-		mContext = context;
-	}
+    public MediaPlayerControlView(Context context) {
+        super(context);
+        mContext = context;
+        init();
+    }
 
-	public MediaPlayerControlView(Context context, boolean useFastForward) {
-		super(context);
-		mContext = context;
-	}
+    public MediaPlayerControlView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mContext = context;
+        init();
+    }
 
-	public void setMediaPlayer(MediaPlayerControl player) {
-		mPlayer = player;
-		updatePausePlay();
-	}
+    public MediaPlayerControlView(Context context, boolean useFastForward) {
+        super(context);
+        mContext = context;
+        init();
+    }
 
-	@Override
-	public void onFinishInflate() {
-		if (mRoot != null)
-			initControllerView(mRoot);
-	}
+    @Override
+    public void onFinishInflate() {
+        if (mRoot != null)
+            init();
+    }
 
-	public void setAnchorView(ViewGroup view) {
-		if (mAnchor != null) {
-			mAnchor.removeView(this);
-			Log.d("debug", "removeView!!!!");
-		}
-		mAnchor = view;
+    protected void init() {
+        LayoutInflater inflate = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mRoot = inflate.inflate(R.layout.controller_media_control, null);
 
-		FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
-				ViewGroup.LayoutParams.MATCH_PARENT,
-				ViewGroup.LayoutParams.MATCH_PARENT
-				);
+        findViews();
+        setListeners();
 
-		removeAllViews();
-		View v = makeControllerView();
-		addView(v, frameParams);
-	}
+        FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+        );
 
-	protected View makeControllerView() {
-		LayoutInflater inflate = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mRoot = inflate.inflate(R.layout.controller_media_control, null);
+        addView(mRoot, frameParams);
+    }
 
-		initControllerView(mRoot);
+    private void setListeners() {
+        myVideoView.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.d("debug", "onTouch");
+                myVideoView.getMediaPlayer().pause();
+                showController();
+                return false;
+            }
+        });
 
-		return mRoot;
-	}
+        mPauseButton.requestFocus();
+        mPauseButton.setOnClickListener(mPauseListener);
+    }
 
-	private void initControllerView(View v) {
-		Log.d("debug", "initControllerView!!!!!!");
-		mPauseButton = (ImageButton) v.findViewById(R.id.mPauseButton);
-		if (mPauseButton != null) {
-			mPauseButton.requestFocus();
-			mPauseButton.setOnClickListener(mPauseListener);
-		}
-	}
+    private void findViews() {
+        myVideoView = (MyVideoView) mRoot.findViewById(R.id.surface_media_player);
+        mPauseButton = (ImageButton) mRoot.findViewById(R.id.mPauseButton);
+        mSeekBar = (SeekBar) mRoot.findViewById(R.id.seekBar);
+    }
 
-	public void show() {
-		if (mAnchor != null) {
-			mAnchor.removeView(this);
-			Log.d("debug", "removeView!!!!");
-		}
-		if (mPauseButton != null) {
-			mPauseButton.requestFocus();
-		}
+    public void showController() {
+//        if (mPauseButton != null) {
+//            mPauseButton.requestFocus();
+//        }
+        setControllerVisibility(View.VISIBLE);
+        updatePausePlay();
+    }
 
-		FrameLayout.LayoutParams tlp = new FrameLayout.LayoutParams(
-				ViewGroup.LayoutParams.MATCH_PARENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT,
-				Gravity.CENTER
-				);
+    public void hideController() {
+        setControllerVisibility(View.GONE);
+        updatePausePlay();
+    }
 
-		mAnchor.addView(this, tlp);
-		updatePausePlay();
+    private void setControllerVisibility(int visibility) {
+        mPauseButton.setVisibility(visibility);
+        mSeekBar.setVisibility(visibility);
+    }
 
-	}
+    public void updatePausePlay() {
+        if (mRoot == null || mPauseButton == null || myVideoView == null) {
+            return;
+        }
 
-	public void updatePausePlay() {
-		if (mRoot == null || mPauseButton == null || mPlayer == null) {
-			return;
-		}
+        if (myVideoView.isPlaying()) {
+            mPauseButton.setImageResource(R.drawable.video_pause);
+        } else {
+            mPauseButton.setImageResource(R.drawable.video_play);
+        }
+    }
 
-		if (mPlayer.isPlaying()) {
-			mPauseButton.setImageResource(R.drawable.video_pause);
-		} else {
-			mPauseButton.setImageResource(R.drawable.video_play);
-		}
-	}
+    private void doPauseResume() {
+        if (myVideoView.isPlaying()) {
+            myVideoView.pause();
+            showController();
+        } else {
+            myVideoView.start();
+            hideController();
+        }
+        updatePausePlay();
+    }
 
-	private void doPauseResume() {
-		if (mPlayer == null) {
-			return;
-		}
+    public void autoPlay() {
+        myVideoView.autoPlay();
+    }
 
-		if (mPlayer.isPlaying()) {
-			mPlayer.pause();
-		} else {
-			mPlayer.start();
-		}
-		updatePausePlay();
-	}
-
-	private View.OnClickListener mPauseListener = new View.OnClickListener() {
-		public void onClick(View v) {
-			doPauseResume();
-		}
-	};
-
-	public interface MediaPlayerControl {
-		void start();
-
-		void pause();
-
-		int getDuration();
-
-		int getCurrentPosition();
-
-		void seekTo(int pos);
-
-		boolean isPlaying();
-
-		int getBufferPercentage();
-
-		boolean canPause();
-
-		boolean canSeekBackward();
-
-		boolean canSeekForward();
-
-		boolean isFullScreen();
-
-		void toggleFullScreen();
-	}
+    private View.OnClickListener mPauseListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            doPauseResume();
+        }
+    };
 }

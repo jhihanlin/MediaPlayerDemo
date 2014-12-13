@@ -2,21 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mediaplayerdemo.activity.MediaPlayerActivity" >
+    tools:context="com.example.mediaplayerdemo.activity.MediaPlayerActivity">
 
-    <FrameLayout
+    <com.example.mediaplayerdemo.controller.MediaPlayerControlView
         android:id="@+id/surface_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <com.example.mediaplayerdemo.widget.MyVideoView
-            android:id="@+id/surface_media_player"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" />
-    </FrameLayout>
+        android:layout_height="wrap_content"></com.example.mediaplayerdemo.controller.MediaPlayerControlView>
 
     <ImageButton
         android:id="@+id/playButton"
