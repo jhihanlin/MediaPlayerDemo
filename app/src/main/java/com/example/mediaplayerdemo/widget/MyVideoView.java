@@ -75,17 +75,17 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     public void onPrepared(MediaPlayer mp) {
         mCurrentState = STATE_PREPARED;
         mTargetState = STATE_PREPARED;
-        Log.d("debug", "mCurrentState:PREPARED!");
         controller.setMediaPlayer(this);
-//        controller.setAnchorView((FrameLayout) findViewById(R.id.surface_container));
+        controller.setAnchorView(anchorView);
+        Log.d("debug", "mCurrentState:PREPARED!");
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.d("debug", "onTouch");
-        controller.setAnchorView(anchorView);
-        controller.show();
         pause();
+        controller.show();
+        controller.updatePausePlay();
         return false;
 
     }
