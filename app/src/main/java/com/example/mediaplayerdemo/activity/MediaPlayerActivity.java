@@ -32,4 +32,14 @@ public class MediaPlayerActivity extends Activity {
         playButton = (ImageButton) findViewById(R.id.playButton);
 		playButton.setOnClickListener(mOnclickListener);
 	}
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

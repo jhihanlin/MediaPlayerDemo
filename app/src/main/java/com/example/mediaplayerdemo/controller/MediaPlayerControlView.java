@@ -112,7 +112,7 @@ public class MediaPlayerControlView extends FrameLayout {
         }
     }
 
-    private void doPauseResume() {
+    public void doPauseResume() {
         if (myVideoView.isPlaying()) {
             myVideoView.pause();
             showController();
