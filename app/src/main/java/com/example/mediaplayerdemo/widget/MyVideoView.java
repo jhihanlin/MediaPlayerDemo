@@ -177,20 +177,17 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
 
     @Override
     public int getDuration() {
-        // TODO Auto-generated method stub
-        return 0;
+        return mediaPlayer.getDuration();
     }
 
     @Override
     public int getCurrentPosition() {
-        // TODO Auto-generated method stub
-        return 0;
+        return mediaPlayer.getCurrentPosition();
     }
 
     @Override
     public void seekTo(int pos) {
-        // TODO Auto-generated method stub
-
+        mediaPlayer.seekTo(pos);
     }
 
     @Override

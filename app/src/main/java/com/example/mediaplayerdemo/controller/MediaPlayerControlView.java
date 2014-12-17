@@ -10,9 +10,13 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.example.mediaplayerdemo.R;
 import com.example.mediaplayerdemo.widget.MyVideoView;
+
+import java.util.Formatter;
+import java.util.Locale;
 
 public class MediaPlayerControlView extends FrameLayout {
 
@@ -21,6 +25,10 @@ public class MediaPlayerControlView extends FrameLayout {
     private ImageButton mPauseButton;
     private MyVideoView myVideoView;
     private SeekBar mSeekBar;
+    private TextView mCurrentTime, mEndTime;
+    private StringBuilder mFormatBuilder;
+    private Formatter mFormatter;
+
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -52,6 +60,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
         findViews();
         setListeners();
+        setControllerVisibility(View.GONE);
 
         FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -62,24 +71,96 @@ public class MediaPlayerControlView extends FrameLayout {
     }
 
     private void setListeners() {
-        myVideoView.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Log.d("debug", "onTouch");
-                myVideoView.getMediaPlayer().pause();
-                showController();
-                return false;
-            }
-        });
+        try {
+            myVideoView.setOnTouchListener(new OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    Log.d("debug", "onTouch");
+                    myVideoView.getMediaPlayer().pause();
+                    showController();
+                    return false;
+                }
+            });
 
-        mPauseButton.requestFocus();
-        mPauseButton.setOnClickListener(mPauseListener);
+            mPauseButton.requestFocus();
+            mPauseButton.setOnClickListener(mPauseListener);
+
+            mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    if (fromUser == false) {
+                        return;
+                    }
+                    long duration = myVideoView.getDuration();
+                    long newPosition = (duration * progress) / 100L;
+                    myVideoView.seekTo((int) newPosition);
+                    mCurrentTime.setText(stringForTime((int) newPosition));
+                    Log.d("debug", "onProgressChanged " + progress);
+                    Log.d("debug", "mCurrentTime " + newPosition);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    showController();
+                    updatePausePlay();
+                    updateSeekBar();
+                }
+            });
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     private void findViews() {
         myVideoView = (MyVideoView) mRoot.findViewById(R.id.surface_media_player);
         mPauseButton = (ImageButton) mRoot.findViewById(R.id.mPauseButton);
         mSeekBar = (SeekBar) mRoot.findViewById(R.id.seekBar);
+        mCurrentTime = (TextView) mRoot.findViewById(R.id.mCurrentTime);
+        mEndTime = (TextView) mRoot.findViewById(R.id.mEndTime);
+    }
+
+    private int updateSeekBar() {
+
+        int position = myVideoView.getCurrentPosition();
+        int duration = myVideoView.getDuration();
+        if (duration > 0) {
+            int seekBarPosition = (int) (((double) position / duration) * 100);
+            mSeekBar.setProgress(seekBarPosition);
+            Log.d("debug", "updateSeekBar " + seekBarPosition);
+            Log.d("debug", "updateSeekBar " + position);
+            Log.d("debug", "updateSeekBar " + duration);
+        }
+        int percent = myVideoView.getBufferPercentage();
+        mSeekBar.setSecondaryProgress(percent * 10);
+
+        mEndTime.setText(stringForTime(duration));
+        mCurrentTime.setText(stringForTime(position));
+
+        return position;
+    }
+
+    private String stringForTime(int timeMs) {
+        int totalSeconds = timeMs / 1000;
+
+        int seconds = totalSeconds % 60;
+        int minutes = (totalSeconds / 60) % 60;
+        int hours = totalSeconds / 3600;
+
+        mFormatBuilder = new StringBuilder();
+        mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
+
+        mFormatBuilder.setLength(0);
+        if (hours > 0) {
+            return mFormatter.format("%d:%02d:%02d", hours, minutes, seconds).toString();
+        } else {
+            return mFormatter.format("%02d:%02d", minutes, seconds).toString();
+        }
     }
 
     public void showController() {
@@ -88,16 +169,20 @@ public class MediaPlayerControlView extends FrameLayout {
 //        }
         setControllerVisibility(View.VISIBLE);
         updatePausePlay();
+        updateSeekBar();
     }
 
     public void hideController() {
         setControllerVisibility(View.GONE);
         updatePausePlay();
+        updateSeekBar();
     }
 
     private void setControllerVisibility(int visibility) {
         mPauseButton.setVisibility(visibility);
         mSeekBar.setVisibility(visibility);
+        mCurrentTime.setVisibility(visibility);
+        mEndTime.setVisibility(visibility);
     }
 
     public void updatePausePlay() {
@@ -121,6 +206,7 @@ public class MediaPlayerControlView extends FrameLayout {
             hideController();
         }
         updatePausePlay();
+        updateSeekBar();
     }
 
     public void autoPlay() {
