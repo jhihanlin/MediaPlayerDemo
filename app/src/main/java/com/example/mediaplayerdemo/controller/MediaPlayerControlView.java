@@ -18,12 +18,17 @@ import com.example.mediaplayerdemo.widget.MyVideoView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.lang.ref.WeakReference;
 import java.util.Formatter;
 import java.util.Locale;
 
 import android.os.Handler;
+import android.os.Message;
 
 public class MediaPlayerControlView extends FrameLayout {
+    private static final int sDefaultTimeout = 3000;
+    private static final int FADE_OUT = 1;
+    private static final int SHOW_PROGRESS = 2;
 
     private Context mContext;
     private View mRoot;
@@ -37,6 +42,9 @@ public class MediaPlayerControlView extends FrameLayout {
     private AdView mAdView;
     private AdRequest adRequest;
     private Handler mHandler = new MessageHandler(this);
+    private boolean mShowing;
+    private boolean mDragging;
+
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -78,9 +86,20 @@ public class MediaPlayerControlView extends FrameLayout {
         addView(mRoot, frameParams);
     }
 
+    public void hide() {
+
+        try {
+            hideController();
+            mHandler.removeMessages(SHOW_PROGRESS);
+        } catch (IllegalArgumentException ex) {
+            Log.d("debug", "hide");
+        }
+        mShowing = false;
+    }
+
     private void setAdView() {
         LayoutInflater inflate = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflate.inflate(R.layout.controller_pause_adview, null);
+        View v = inflate.inflate(R.layout.controller_adview, null);
         mAdView = (AdView) v.findViewById(R.id.adView);
         adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -97,6 +116,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
     private void refreshAdView() {
         mAdView.loadAd(new AdRequest.Builder().build());
+        Log.d("debug", "refresh Ad!");
     }
 
     private void setAdViewVisibility(int visibility) {
@@ -110,14 +130,14 @@ public class MediaPlayerControlView extends FrameLayout {
                 public boolean onTouch(View v, MotionEvent event) {
                     Log.d("debug", "onTouch");
 //                    myVideoView.getMediaPlayer().pause();
-                    showController();
+                    showController(sDefaultTimeout);
                     return false;
                 }
             });
 
             mPauseButton.requestFocus();
             mPauseButton.setOnClickListener(mPauseListener);
-
+            mSeekBar.setMax(1000);
             mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -125,7 +145,7 @@ public class MediaPlayerControlView extends FrameLayout {
                         return;
                     }
                     long duration = myVideoView.getDuration();
-                    long newPosition = (duration * progress) / 100L;
+                    long newPosition = (duration * progress) / 1000L;
                     myVideoView.seekTo((int) newPosition);
                     mCurrentTime.setText(stringForTime((int) newPosition));
                     Log.d("debug", "onProgressChanged " + progress);
@@ -134,14 +154,19 @@ public class MediaPlayerControlView extends FrameLayout {
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
-
+                    mDragging = true;
+                    mHandler.removeMessages(SHOW_PROGRESS);
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    showController();
+                    mDragging = false;
+
+                    showController(sDefaultTimeout);
                     updatePausePlay();
                     updateSeekBar();
+                    mHandler.sendEmptyMessage(SHOW_PROGRESS);
+
                 }
             });
 
@@ -164,7 +189,7 @@ public class MediaPlayerControlView extends FrameLayout {
         int position = myVideoView.getCurrentPosition();
         int duration = myVideoView.getDuration();
         if (duration > 0) {
-            int seekBarPosition = (int) (((double) position / duration) * 100);
+            int seekBarPosition = (int) (((double) position / duration) * 1000);
             mSeekBar.setProgress(seekBarPosition);
             Log.d("debug", "updateSeekBar " + seekBarPosition);
             Log.d("debug", "updateSeekBar " + position);
@@ -197,10 +222,19 @@ public class MediaPlayerControlView extends FrameLayout {
         }
     }
 
-    public void showController() {
+    public void showController(int timeout) {
         setControllerVisibility(View.VISIBLE);
         updatePausePlay();
         updateSeekBar();
+
+        mShowing = true;
+        mHandler.sendEmptyMessage(SHOW_PROGRESS);
+
+        Message msg = mHandler.obtainMessage(FADE_OUT);
+        if (timeout != 0) {
+            mHandler.removeMessages(FADE_OUT);
+            mHandler.sendMessageDelayed(msg, timeout);
+        }
     }
 
     public void hideController() {
@@ -231,8 +265,9 @@ public class MediaPlayerControlView extends FrameLayout {
     public void doPauseResume() {
         if (myVideoView.isPlaying()) {
             myVideoView.pause();
-            showController();
+            showController(sDefaultTimeout);
             setAdViewVisibility(View.VISIBLE);
+            refreshAdView();
         } else {
             myVideoView.start();
             hideController();
@@ -240,6 +275,8 @@ public class MediaPlayerControlView extends FrameLayout {
         }
         updatePausePlay();
         updateSeekBar();
+
+
     }
 
     public void autoPlay() {
@@ -252,8 +289,34 @@ public class MediaPlayerControlView extends FrameLayout {
         }
     };
 
-    private class MessageHandler extends Handler {
-        public MessageHandler(MediaPlayerControlView mediaPlayerControlView) {
+    private static class MessageHandler extends Handler {
+        private final WeakReference<MediaPlayerControlView> mView;
+
+        MessageHandler(MediaPlayerControlView view) {
+            mView = new WeakReference<MediaPlayerControlView>(view);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            MediaPlayerControlView view = mView.get();
+            if (view == null || view.myVideoView == null) {
+                return;
+            }
+
+            int pos;
+            switch (msg.what) {
+                case FADE_OUT:
+                    view.hide();
+                    break;
+                case SHOW_PROGRESS:
+                    pos = view.updateSeekBar();
+//                    Log.d("debug", String.valueOf(pos));
+                    if (!view.mDragging && view.mShowing && view.myVideoView.isPlaying()) {
+                        msg = obtainMessage(SHOW_PROGRESS);
+                        sendMessageDelayed(msg, 1000 - (pos % 1000));
+                    }
+                    break;
+            }
         }
     }
 }
