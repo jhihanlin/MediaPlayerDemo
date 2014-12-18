@@ -41,7 +41,6 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     private SurfaceHolder mSurfaceHolder = null;
     private MediaPlayer mediaPlayer;
     private Context context;
-    private FrameLayout anchorView;
 
 
     public MyVideoView(Context context) {
