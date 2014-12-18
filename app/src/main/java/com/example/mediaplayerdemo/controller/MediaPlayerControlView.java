@@ -9,14 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.mediaplayerdemo.R;
 import com.example.mediaplayerdemo.widget.MyVideoView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.Formatter;
 import java.util.Locale;
+
+import android.os.Handler;
 
 public class MediaPlayerControlView extends FrameLayout {
 
@@ -28,7 +33,10 @@ public class MediaPlayerControlView extends FrameLayout {
     private TextView mCurrentTime, mEndTime;
     private StringBuilder mFormatBuilder;
     private Formatter mFormatter;
-
+    private LinearLayout mLinearLayout;
+    private AdView mAdView;
+    private AdRequest adRequest;
+    private Handler mHandler = new MessageHandler(this);
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -60,8 +68,8 @@ public class MediaPlayerControlView extends FrameLayout {
 
         findViews();
         setListeners();
+        setAdView();
         setControllerVisibility(View.GONE);
-
         FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
@@ -70,13 +78,38 @@ public class MediaPlayerControlView extends FrameLayout {
         addView(mRoot, frameParams);
     }
 
+    private void setAdView() {
+        LayoutInflater inflate = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflate.inflate(R.layout.controller_pause_adview, null);
+        mAdView = (AdView) v.findViewById(R.id.adView);
+        adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        if (mLinearLayout != null) {
+            mLinearLayout.removeAllViews();
+            ViewGroup parent = (ViewGroup) mAdView.getParent();
+            if (parent != null) {
+                parent.removeView(mAdView);
+            }
+            mLinearLayout.addView(mAdView);
+        }
+    }
+
+    private void refreshAdView() {
+        mAdView.loadAd(new AdRequest.Builder().build());
+    }
+
+    private void setAdViewVisibility(int visibility) {
+        mLinearLayout.setVisibility(visibility);
+    }
+
     private void setListeners() {
         try {
             myVideoView.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     Log.d("debug", "onTouch");
-                    myVideoView.getMediaPlayer().pause();
+//                    myVideoView.getMediaPlayer().pause();
                     showController();
                     return false;
                 }
@@ -123,6 +156,7 @@ public class MediaPlayerControlView extends FrameLayout {
         mSeekBar = (SeekBar) mRoot.findViewById(R.id.seekBar);
         mCurrentTime = (TextView) mRoot.findViewById(R.id.mCurrentTime);
         mEndTime = (TextView) mRoot.findViewById(R.id.mEndTime);
+        mLinearLayout = (LinearLayout) mRoot.findViewById(R.id.adLinearLayout);
     }
 
     private int updateSeekBar() {
@@ -164,9 +198,6 @@ public class MediaPlayerControlView extends FrameLayout {
     }
 
     public void showController() {
-//        if (mPauseButton != null) {
-//            mPauseButton.requestFocus();
-//        }
         setControllerVisibility(View.VISIBLE);
         updatePausePlay();
         updateSeekBar();
@@ -201,9 +232,11 @@ public class MediaPlayerControlView extends FrameLayout {
         if (myVideoView.isPlaying()) {
             myVideoView.pause();
             showController();
+            setAdViewVisibility(View.VISIBLE);
         } else {
             myVideoView.start();
             hideController();
+            setAdViewVisibility(View.GONE);
         }
         updatePausePlay();
         updateSeekBar();
@@ -218,4 +251,9 @@ public class MediaPlayerControlView extends FrameLayout {
             doPauseResume();
         }
     };
+
+    private class MessageHandler extends Handler {
+        public MessageHandler(MediaPlayerControlView mediaPlayerControlView) {
+        }
+    }
 }

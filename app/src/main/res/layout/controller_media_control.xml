@@ -26,8 +26,17 @@
         android:visibility="gone" />
 
     <LinearLayout
+        android:id="@+id/adLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:gravity="bottom"
         android:orientation="horizontal">
 
         <TextView
@@ -44,7 +53,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6"
+            android:progressDrawable="@drawable/custom_seek_bar"
+            android:thumb="@drawable/bar"
+            android:thumbOffset="4dip"
             android:visibility="visible" />
+
 
         <TextView
             android:id="@+id/mEndTime"

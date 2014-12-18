@@ -155,7 +155,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         mTargetState = STATE_PAUSED;
     }
 
-    private void release(boolean cleartargetstate) {
+    private void release(boolean clearTargetState) {
         try {
             if (mediaPlayer != null) {
                 mediaPlayer.reset();
@@ -163,7 +163,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
                 mediaPlayer = null;
                 Log.d("debug", "mediaPlayer is release!");
 
-                if (cleartargetstate) {
+                if (clearTargetState) {
                     mCurrentState = STATE_IDLE;
                     mTargetState = STATE_IDLE;
                     Log.d("debug", "mCurrentState:IDLE!");
