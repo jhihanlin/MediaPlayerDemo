@@ -44,7 +44,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private Handler mHandler = new MessageHandler(this);
     private boolean mShowing;
     private boolean mDragging;
-
+    public int resumePosition;
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -129,8 +129,9 @@ public class MediaPlayerControlView extends FrameLayout {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     Log.d("debug", "onTouch");
-//                    myVideoView.getMediaPlayer().pause();
-                    showController(sDefaultTimeout);
+                    if(myVideoView.isInPlaybackState()){
+                        showController(sDefaultTimeout);
+                    }
                     return false;
                 }
             });
@@ -185,7 +186,6 @@ public class MediaPlayerControlView extends FrameLayout {
     }
 
     private int updateSeekBar() {
-
         int position = myVideoView.getCurrentPosition();
         int duration = myVideoView.getDuration();
         if (duration > 0) {
@@ -196,6 +196,7 @@ public class MediaPlayerControlView extends FrameLayout {
             Log.d("debug", "updateSeekBar " + duration);
         }
         int percent = myVideoView.getBufferPercentage();
+        Log.d("debug", "updateSeekBar " + percent);
         mSeekBar.setSecondaryProgress(percent * 10);
 
         mEndTime.setText(stringForTime(duration));
@@ -275,8 +276,23 @@ public class MediaPlayerControlView extends FrameLayout {
         }
         updatePausePlay();
         updateSeekBar();
+    }
 
+    public void resume(int len) {
+        Log.d("debug", "resume!!!!!!!!!!!!!!!!!!!");
+        if (myVideoView != null) {
+            myVideoView.pause();
+            myVideoView.seekTo(len);
+            Log.d("debug", "seek to!!!!!!!!!!!!!!!!!!!");
+            showController(sDefaultTimeout);
+            setAdViewVisibility(View.VISIBLE);
+            refreshAdView();
+        }
+    }
 
+    public int getCurrentPosition() {
+        resumePosition = myVideoView.getCurrentPosition();
+        return resumePosition;
     }
 
     public void autoPlay() {
@@ -310,7 +326,6 @@ public class MediaPlayerControlView extends FrameLayout {
                     break;
                 case SHOW_PROGRESS:
                     pos = view.updateSeekBar();
-//                    Log.d("debug", String.valueOf(pos));
                     if (!view.mDragging && view.mShowing && view.myVideoView.isPlaying()) {
                         msg = obtainMessage(SHOW_PROGRESS);
                         sendMessageDelayed(msg, 1000 - (pos % 1000));

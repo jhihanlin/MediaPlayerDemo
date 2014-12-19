@@ -46,7 +46,8 @@
             android:layout_weight="2"
             android:text="Current time"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:textColor="@color/white" />
 
         <SeekBar
             android:id="@+id/seekBar"
@@ -66,7 +67,8 @@
             android:layout_weight="2"
             android:text="Current time"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

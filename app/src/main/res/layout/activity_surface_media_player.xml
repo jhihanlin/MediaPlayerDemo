@@ -8,13 +8,4 @@
         android:id="@+id/surface_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></com.example.mediaplayerdemo.controller.MediaPlayerControlView>
-
-    <ImageButton
-        android:id="@+id/playButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
-        android:src="@drawable/video_play" />
-
 </RelativeLayout>

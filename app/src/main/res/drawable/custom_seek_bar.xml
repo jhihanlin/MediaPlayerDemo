@@ -7,7 +7,7 @@
             android:insetBottom="5dip"
             android:insetTop="5dip">
             <shape>
-                <solid android:color="#40ffffff" />
+                <solid android:color="@color/white" />
             </shape>
         </inset>
     </item>
@@ -18,7 +18,7 @@
                 android:insetBottom="5dip"
                 android:insetTop="5dip">
                 <shape>
-                    <solid android:color="#7affffff" />
+                    <solid android:color="@color/light_gray" />
                 </shape>
             </inset>
         </clip>
@@ -30,7 +30,7 @@
                 android:insetBottom="5dip"
                 android:insetTop="5dip">
                 <shape>
-                    <solid android:color="#ff4094eb" />
+                    <solid android:color="@color/pink" />
                 </shape>
             </inset>
         </clip>

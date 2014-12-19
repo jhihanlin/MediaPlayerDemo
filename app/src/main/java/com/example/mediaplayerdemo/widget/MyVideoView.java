@@ -41,7 +41,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     private SurfaceHolder mSurfaceHolder = null;
     private MediaPlayer mediaPlayer;
     private Context context;
-
+    public int mCurrentBufferPercentage;
 
     public MyVideoView(Context context) {
         super(context);
@@ -61,6 +61,8 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     private void init(Context context) {
         this.context = context;
         mediaPlayer = new MediaPlayer();
+        Log.d("debug", "init*************!");
+
         SurfaceHolder videoHolder = this.getHolder();
         videoHolder.addCallback(this);
     }
@@ -73,24 +75,33 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
 
         if (autoPlay) {
             start();
+            autoPlay = false;
         }
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        Log.d("debug", "surfaceCreated************");
         mSurfaceHolder = holder;
-        initialMediaPlayer(mSurfaceHolder);
+        if (!isInPlaybackState()) {
+            Log.d("debug", "initialMediaPlayer************");
+            initialMediaPlayer(mSurfaceHolder);
+        } else {
+            mediaPlayer.setDisplay(mSurfaceHolder);
+        }
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        if (mCurrentState != STATE_PAUSED) {
+        Log.d("debug", "release: isInPlaybackState is : " + isInPlaybackState());
+        Log.d("debug", "release: mCurrentState is : " + String.valueOf(mCurrentState));
+        if (!isInPlaybackState()) {
             mSurfaceHolder = null;
+            Log.d("debug", "surfaceDestroyed************");
             release(true);
         }
     }
@@ -99,12 +110,16 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         try {
 
             try {
+                Log.d("debug", "reset************mcurrentState" + mCurrentState);
                 mCurrentState = STATE_PREPARING;
+                Log.d("debug", "reset************");
                 mediaPlayer.reset();
+                mCurrentBufferPercentage = 0;
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 mediaPlayer.setDataSource(context, Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
                 mediaPlayer.setDisplay(this.getHolder());
                 mediaPlayer.prepareAsync();
+                mediaPlayer.setOnBufferingUpdateListener(this);
                 mediaPlayer.setOnPreparedListener(this);
                 mediaPlayer.setOnErrorListener(this);
             } catch (IllegalArgumentException e) {
@@ -131,7 +146,6 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
 
     @Override
     public void start() {
-        Log.d("debug", "mCurrentState" + mCurrentState);
         if (isInPlaybackState()) {
             mediaPlayer.start();
             Log.d("debug", "MediaPlayer start!");
@@ -196,8 +210,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
 
     @Override
     public int getBufferPercentage() {
-        // TODO Auto-generated method stub
-        return 0;
+        return mCurrentBufferPercentage;
     }
 
     @Override
@@ -240,7 +253,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
 
     @Override
     public void onBufferingUpdate(MediaPlayer mp, int percent) {
-        // TODO Auto-generated method stub
+        mCurrentBufferPercentage = percent;
 
     }
 

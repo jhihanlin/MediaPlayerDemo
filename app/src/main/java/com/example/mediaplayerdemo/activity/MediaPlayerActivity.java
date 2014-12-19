@@ -13,15 +13,8 @@ import android.widget.ImageButton;
 
 public class MediaPlayerActivity extends FragmentActivity {
 
-    private ImageButton playButton;
     private MediaPlayerControlView mediaPlayerControlView;
-
-    private View.OnClickListener mOnclickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            mediaPlayerControlView.autoPlay();
-            playButton.setVisibility(View.GONE);
-        }
-    };
+    private int length;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +22,26 @@ public class MediaPlayerActivity extends FragmentActivity {
         setContentView(R.layout.activity_surface_media_player);
 
         mediaPlayerControlView = (MediaPlayerControlView) findViewById(R.id.surface_container);
-
-        playButton = (ImageButton) findViewById(R.id.playButton);
-        playButton.setOnClickListener(mOnclickListener);
+        mediaPlayerControlView.autoPlay();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mediaPlayerControlView.doPauseResume();
+        Log.d("debug","onPause");
+        length = mediaPlayerControlView.getCurrentPosition();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mediaPlayerControlView.doPauseResume();
+        Log.d("debug","onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.d("debug","onRestart");
+        mediaPlayerControlView.resume(length);
+        super.onRestart();
     }
 }
