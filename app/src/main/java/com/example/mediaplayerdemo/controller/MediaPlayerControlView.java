@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.mediaplayerdemo.R;
+import com.example.mediaplayerdemo.util.MySeekBar;
 import com.example.mediaplayerdemo.widget.MyVideoView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,7 +35,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private View mRoot;
     private ImageButton mPauseButton;
     private MyVideoView myVideoView;
-    private SeekBar mSeekBar;
+    private MySeekBar mSeekBar;
     private TextView mCurrentTime, mEndTime;
     private StringBuilder mFormatBuilder;
     private Formatter mFormatter;
@@ -129,7 +130,7 @@ public class MediaPlayerControlView extends FrameLayout {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     Log.d("debug", "onTouch");
-                    if(myVideoView.isInPlaybackState()){
+                    if (myVideoView.isInPlaybackState()) {
                         showController(sDefaultTimeout);
                     }
                     return false;
@@ -157,6 +158,7 @@ public class MediaPlayerControlView extends FrameLayout {
                 public void onStartTrackingTouch(SeekBar seekBar) {
                     mDragging = true;
                     mHandler.removeMessages(SHOW_PROGRESS);
+
                 }
 
                 @Override
@@ -179,7 +181,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private void findViews() {
         myVideoView = (MyVideoView) mRoot.findViewById(R.id.surface_media_player);
         mPauseButton = (ImageButton) mRoot.findViewById(R.id.mPauseButton);
-        mSeekBar = (SeekBar) mRoot.findViewById(R.id.seekBar);
+        mSeekBar = (MySeekBar) mRoot.findViewById(R.id.seekBar);
         mCurrentTime = (TextView) mRoot.findViewById(R.id.mCurrentTime);
         mEndTime = (TextView) mRoot.findViewById(R.id.mEndTime);
         mLinearLayout = (LinearLayout) mRoot.findViewById(R.id.adLinearLayout);
