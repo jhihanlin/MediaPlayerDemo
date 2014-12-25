@@ -24,7 +24,6 @@ public class MediaPlayerActivity extends FragmentActivity {
         mediaPlayerControlView = (MediaPlayerControlView) findViewById(R.id.surface_container);
         mediaPlayerControlView.autoPlay();
     }
-
     @Override
     protected void onPause() {
         super.onPause();

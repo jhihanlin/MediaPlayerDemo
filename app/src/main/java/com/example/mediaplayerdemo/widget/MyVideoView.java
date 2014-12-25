@@ -8,11 +8,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.MediaController;
-
-import com.example.mediaplayerdemo.controller.MediaPlayerControlView;
 
 import java.io.IOException;
 
@@ -20,7 +16,7 @@ import java.io.IOException;
  * Created by jhihanlin on 12/13/14.
  */
 public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
-        MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener,
+        MediaPlayer.OnErrorListener,
         MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener,
         MediaPlayer.OnInfoListener, MediaController.MediaPlayerControl {
 
@@ -43,6 +39,8 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     private MediaPlayer mediaPlayer;
     private Context context;
     public int mCurrentBufferPercentage;
+    public MediaPlayer.OnPreparedListener mOnPreparedListener;
+    public MediaPlayer.OnPreparedListener mPreparedListener;
 
     public MyVideoView(Context context) {
         super(context);
@@ -63,21 +61,29 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         this.context = context;
         mediaPlayer = new MediaPlayer();
         Log.d("debug", "init*************!");
-
         SurfaceHolder videoHolder = this.getHolder();
         videoHolder.addCallback(this);
+        setListener();
     }
 
-    @Override
-    public void onPrepared(MediaPlayer mp) {
-        mCurrentState = STATE_PREPARED;
-        mTargetState = STATE_PREPARED;
-        Log.d("debug", "mCurrentState:PREPARED!");
+    public void setListener() {
+        mPreparedListener = new MediaPlayer.OnPreparedListener() {
 
-        if (autoPlay) {
-            start();
-            autoPlay = false;
-        }
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mCurrentState = STATE_PREPARED;
+                mTargetState = STATE_PREPARED;
+                Log.d("debug", "mCurrentState:PREPARED!");
+                if (mOnPreparedListener != null) {
+                    mOnPreparedListener.onPrepared(mediaPlayer);
+                }
+                if (autoPlay) {
+                    Log.d("prepared", "MyVideoView : onPrepared!!!!!!");
+                    start();
+                    autoPlay = false;
+                }
+            }
+        };
     }
 
     @Override
@@ -121,7 +127,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
                 mediaPlayer.setDisplay(this.getHolder());
                 mediaPlayer.prepareAsync();
                 mediaPlayer.setOnBufferingUpdateListener(this);
-                mediaPlayer.setOnPreparedListener(this);
+                mediaPlayer.setOnPreparedListener(mPreparedListener);
                 mediaPlayer.setOnErrorListener(this);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
@@ -274,4 +280,9 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     public MediaPlayer getMediaPlayer() {
         return mediaPlayer;
     }
+
+    public void setOnPreparedListener(MediaPlayer.OnPreparedListener l) {
+        mediaPlayer.setOnPreparedListener(l);
+    }
+
 }
