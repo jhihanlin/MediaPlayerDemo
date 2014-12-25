@@ -39,7 +39,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     private MediaPlayer mediaPlayer;
     private Context context;
     public int mCurrentBufferPercentage;
-    public MediaPlayer.OnPreparedListener mOnPreparedListener;
+    public MediaPlayer.OnPreparedListener newPreparedListener;
     public MediaPlayer.OnPreparedListener mPreparedListener;
 
     public MyVideoView(Context context) {
@@ -74,8 +74,8 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
                 mCurrentState = STATE_PREPARED;
                 mTargetState = STATE_PREPARED;
                 Log.d("debug", "mCurrentState:PREPARED!");
-                if (mOnPreparedListener != null) {
-                    mOnPreparedListener.onPrepared(mediaPlayer);
+                if (newPreparedListener != null) {
+                    newPreparedListener.onPrepared(mediaPlayer);
                 }
                 if (autoPlay) {
                     Log.d("prepared", "MyVideoView : onPrepared!!!!!!");
@@ -282,7 +282,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     public void setOnPreparedListener(MediaPlayer.OnPreparedListener l) {
-        mediaPlayer.setOnPreparedListener(l);
+        newPreparedListener = l;
     }
 
 }

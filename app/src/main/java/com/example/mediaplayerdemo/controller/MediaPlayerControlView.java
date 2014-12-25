@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.mediaplayerdemo.R;
 import com.example.mediaplayerdemo.util.MySeekBar;
 import com.example.mediaplayerdemo.widget.MyVideoView;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -36,7 +37,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
     private Context mContext;
     private View mRoot;
-    private ImageView mPauseButton, mReportButton, mShareButton, mMockup;
+    private ImageView mPauseButton, mReportButton, mShareButton;
     private MyVideoView myVideoView;
     private MySeekBar mSeekBar;
     private TextView mCurrentTime, mEndTime;
@@ -49,6 +50,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private boolean mShowing;
     private boolean mDragging;
     public int resumePosition;
+    private MediaPlayer.OnPreparedListener mOnPreparedListener;
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -107,13 +109,40 @@ public class MediaPlayerControlView extends FrameLayout {
         mAdView = (AdView) v.findViewById(R.id.adView);
         adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+                Log.d("adView", "ad open");
+                int adHeight = mAdView.getHeight();
+                int adWidth = mAdView.getWidth();
+                Log.d("adView", "ad adHeight" + adHeight);
+                Log.d("adView", "ad adWidth" + adWidth);
+
+                mLinearLayout.getLayoutParams().height = adHeight;
+                mLinearLayout.getLayoutParams().width = adWidth;
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("adView", "ad loaded");
+
+                int adHeight = mAdView.getHeight();
+                int adWidth = mAdView.getWidth();
+                Log.d("adView", "ad adHeight" + adHeight);
+                Log.d("adView", "ad adWidth" + adWidth);
+
+                mLinearLayout.getLayoutParams().height = adHeight;
+                mLinearLayout.getLayoutParams().width = adWidth;
+            }
+        });
         if (mLinearLayout != null) {
             mLinearLayout.removeAllViews();
             ViewGroup parent = (ViewGroup) mAdView.getParent();
             if (parent != null) {
                 parent.removeAllViews();
             }
-
             mLinearLayout.addView(mAdView);
         }
     }
@@ -124,18 +153,22 @@ public class MediaPlayerControlView extends FrameLayout {
     }
 
     public void setAdViewVisibility(int visibility) {
-        mMockup.setVisibility(visibility);
         mLinearLayout.setVisibility(visibility);
     }
 
     private void setListeners() {
         try {
-            myVideoView.getMediaPlayer().setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+            mOnPreparedListener = new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
-
+                    Log.d("prepared", "MediaPlayerController : onPrepared!!!!!!");
+                    setAdViewVisibility(View.GONE);
                 }
-            });
+            };
+            mOnPreparedListener.onPrepared(myVideoView.getMediaPlayer());
+            myVideoView.setOnPreparedListener(mOnPreparedListener);
+
             myVideoView.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -226,7 +259,6 @@ public class MediaPlayerControlView extends FrameLayout {
         mLinearLayout = (LinearLayout) mRoot.findViewById(R.id.adLinearLayout);
         mReportButton = (ImageView) mRoot.findViewById(R.id.mReportButton);
         mShareButton = (ImageView) mRoot.findViewById(R.id.mShareButton);
-        mMockup = (ImageView) mRoot.findViewById(R.id.mMockup);
     }
 
     private int updateSeekBar() {

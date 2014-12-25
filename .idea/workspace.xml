@@ -5,7 +5,7 @@
       <filter>
         <option name="logLevel" value="verbose" />
         <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="prepared" />
+        <option name="logTagPattern" value="adView" />
         <option name="name" value="app: com.example.mediaplayerdemo" />
         <option name="packageNamePattern" value="com.example.mediaplayerdemo" />
         <option name="pid" value="" />
@@ -34,7 +34,6 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.mediaplayerdemo" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d75221a1-8a44-4391-8b37-4fd12b8e3409" name="Default" comment="" />
@@ -82,13 +81,15 @@
       <file leaf-file-name="MyVideoView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.769231" vertical-offset="3553" max-vertical-offset="4050">
-              <caret line="283" column="23" selection-start-line="283" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+            <state vertical-scroll-proportion="69.38461" vertical-offset="3589" max-vertical-offset="4050">
+              <caret line="129" column="49" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="49" />
               <folding>
                 <element signature="e#2205#2821#0" expanded="true" />
                 <element signature="e#2810#2811#0" expanded="true" />
                 <element signature="e#8355#8356#0" expanded="true" />
                 <element signature="e#8386#8387#0" expanded="true" />
+                <element signature="e#8538#8539#0" expanded="true" />
+                <element signature="e#8577#8578#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,13 +97,13 @@
       </file>
       <file leaf-file-name="controller_media_control.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.038462" vertical-offset="0" max-vertical-offset="2415">
-              <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.45283" vertical-offset="327" max-vertical-offset="2340">
+              <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
               <folding />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer">
+          <provider editor-type-id="android-designer">
             <state />
           </provider>
         </entry>
@@ -120,16 +121,20 @@
       <file leaf-file-name="MediaPlayerControlView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/controller/MediaPlayerControlView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44668007" vertical-offset="1803" max-vertical-offset="5865">
-              <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.08783784" vertical-offset="1941" max-vertical-offset="6345">
+              <caret line="132" column="38" selection-start-line="132" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4299#4667#0" expanded="true" />
-                <element signature="e#4652#4653#0" expanded="true" />
-                <element signature="e#4817#5414#0" expanded="true" />
-                <element signature="e#5399#5400#0" expanded="true" />
-                <element signature="e#11847#11958#0" expanded="true" />
-                <element signature="e#11951#11952#0" expanded="true" />
+                <element signature="e#5064#5065#0" expanded="true" />
+                <element signature="e#5119#5120#0" expanded="true" />
+                <element signature="e#5205#5493#0" expanded="true" />
+                <element signature="e#5478#5479#0" expanded="true" />
+                <element signature="e#5681#6049#0" expanded="true" />
+                <element signature="e#6034#6035#0" expanded="true" />
+                <element signature="e#6199#6796#0" expanded="true" />
+                <element signature="e#6781#6782#0" expanded="true" />
+                <element signature="e#13165#13276#0" expanded="true" />
+                <element signature="e#13269#13270#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,7 +143,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="705">
+            <state vertical-scroll-proportion="0.0" vertical-offset="206" max-vertical-offset="705">
               <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
               <folding />
             </state>
@@ -152,6 +157,21 @@
               <caret line="7" column="22" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="22" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controller_adview.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_adview.xml">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="e#519#546#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -711,13 +731,13 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_surface_media_player.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/custom_seek_bar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/util/MySeekBar.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/controller_adview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/pause_imageview_click.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/activity/MediaPlayerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/controller_adview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/controller/MediaPlayerControlView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml" />
       </list>
     </option>
   </component>
@@ -1234,7 +1254,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15683453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20719424" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28345323" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1242,7 +1262,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18454936" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="513" y="153" width="414" height="550" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47194245" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.021582734" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1324,6 +1344,8 @@
             <element signature="e#2810#2811#0" expanded="true" />
             <element signature="e#8355#8356#0" expanded="true" />
             <element signature="e#8386#8387#0" expanded="true" />
+            <element signature="e#8538#8539#0" expanded="true" />
+            <element signature="e#8577#8578#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1356,12 +1378,16 @@
           <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4299#4667#0" expanded="true" />
-            <element signature="e#4652#4653#0" expanded="true" />
-            <element signature="e#4817#5414#0" expanded="true" />
-            <element signature="e#5399#5400#0" expanded="true" />
-            <element signature="e#11847#11958#0" expanded="true" />
-            <element signature="e#11951#11952#0" expanded="true" />
+            <element signature="e#5064#5065#0" expanded="true" />
+            <element signature="e#5119#5120#0" expanded="true" />
+            <element signature="e#5205#5493#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#5681#6049#0" expanded="true" />
+            <element signature="e#6034#6035#0" expanded="true" />
+            <element signature="e#6199#6796#0" expanded="true" />
+            <element signature="e#6781#6782#0" expanded="true" />
+            <element signature="e#13165#13276#0" expanded="true" />
+            <element signature="e#13269#13270#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1418,6 +1444,8 @@
             <element signature="e#2810#2811#0" expanded="true" />
             <element signature="e#8355#8356#0" expanded="true" />
             <element signature="e#8386#8387#0" expanded="true" />
+            <element signature="e#8538#8539#0" expanded="true" />
+            <element signature="e#8577#8578#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1450,12 +1478,16 @@
           <caret line="156" column="53" selection-start-line="156" selection-start-column="53" selection-end-line="156" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4299#4667#0" expanded="true" />
-            <element signature="e#4652#4653#0" expanded="true" />
-            <element signature="e#4817#5414#0" expanded="true" />
-            <element signature="e#5399#5400#0" expanded="true" />
-            <element signature="e#11847#11958#0" expanded="true" />
-            <element signature="e#11951#11952#0" expanded="true" />
+            <element signature="e#5064#5065#0" expanded="true" />
+            <element signature="e#5119#5120#0" expanded="true" />
+            <element signature="e#5205#5493#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#5681#6049#0" expanded="true" />
+            <element signature="e#6034#6035#0" expanded="true" />
+            <element signature="e#6199#6796#0" expanded="true" />
+            <element signature="e#6781#6782#0" expanded="true" />
+            <element signature="e#13165#13276#0" expanded="true" />
+            <element signature="e#13269#13270#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1512,6 +1544,8 @@
             <element signature="e#2810#2811#0" expanded="true" />
             <element signature="e#8355#8356#0" expanded="true" />
             <element signature="e#8386#8387#0" expanded="true" />
+            <element signature="e#8538#8539#0" expanded="true" />
+            <element signature="e#8577#8578#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1544,12 +1578,16 @@
           <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4299#4667#0" expanded="true" />
-            <element signature="e#4652#4653#0" expanded="true" />
-            <element signature="e#4817#5414#0" expanded="true" />
-            <element signature="e#5399#5400#0" expanded="true" />
-            <element signature="e#11847#11958#0" expanded="true" />
-            <element signature="e#11951#11952#0" expanded="true" />
+            <element signature="e#5064#5065#0" expanded="true" />
+            <element signature="e#5119#5120#0" expanded="true" />
+            <element signature="e#5205#5493#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#5681#6049#0" expanded="true" />
+            <element signature="e#6034#6035#0" expanded="true" />
+            <element signature="e#6199#6796#0" expanded="true" />
+            <element signature="e#6781#6782#0" expanded="true" />
+            <element signature="e#13165#13276#0" expanded="true" />
+            <element signature="e#13269#13270#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1609,6 +1647,8 @@
             <element signature="e#2810#2811#0" expanded="true" />
             <element signature="e#8355#8356#0" expanded="true" />
             <element signature="e#8386#8387#0" expanded="true" />
+            <element signature="e#8538#8539#0" expanded="true" />
+            <element signature="e#8577#8578#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1619,12 +1659,16 @@
           <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4299#4667#0" expanded="true" />
-            <element signature="e#4652#4653#0" expanded="true" />
-            <element signature="e#4817#5414#0" expanded="true" />
-            <element signature="e#5399#5400#0" expanded="true" />
-            <element signature="e#11847#11958#0" expanded="true" />
-            <element signature="e#11951#11952#0" expanded="true" />
+            <element signature="e#5064#5065#0" expanded="true" />
+            <element signature="e#5119#5120#0" expanded="true" />
+            <element signature="e#5205#5493#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#5681#6049#0" expanded="true" />
+            <element signature="e#6034#6035#0" expanded="true" />
+            <element signature="e#6199#6796#0" expanded="true" />
+            <element signature="e#6781#6782#0" expanded="true" />
+            <element signature="e#13165#13276#0" expanded="true" />
+            <element signature="e#13269#13270#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1723,30 +1767,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_adview.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2857143" vertical-offset="0" max-vertical-offset="630">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding>
-            <element signature="e#519#546#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/video_pause.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pause_imageview_click.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/color.xml">
@@ -1757,22 +1780,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.038462" vertical-offset="0" max-vertical-offset="2415">
-          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/activity/MediaPlayerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
           <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="69.38461" vertical-offset="3589" max-vertical-offset="4050">
+          <caret line="129" column="49" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="49" />
+          <folding>
+            <element signature="e#2205#2821#0" expanded="true" />
+            <element signature="e#2810#2811#0" expanded="true" />
+            <element signature="e#8355#8356#0" expanded="true" />
+            <element signature="e#8386#8387#0" expanded="true" />
+            <element signature="e#8538#8539#0" expanded="true" />
+            <element signature="e#8577#8578#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1784,31 +1811,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.769231" vertical-offset="3553" max-vertical-offset="4050">
-          <caret line="283" column="23" selection-start-line="283" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_adview.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#2205#2821#0" expanded="true" />
-            <element signature="e#2810#2811#0" expanded="true" />
-            <element signature="e#8355#8356#0" expanded="true" />
-            <element signature="e#8386#8387#0" expanded="true" />
+            <element signature="e#519#546#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pause_imageview_click.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.45283" vertical-offset="327" max-vertical-offset="2340">
+          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/controller/MediaPlayerControlView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44668007" vertical-offset="1803" max-vertical-offset="5865">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.08783784" vertical-offset="1941" max-vertical-offset="6345">
+          <caret line="132" column="38" selection-start-line="132" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4299#4667#0" expanded="true" />
-            <element signature="e#4652#4653#0" expanded="true" />
-            <element signature="e#4817#5414#0" expanded="true" />
-            <element signature="e#5399#5400#0" expanded="true" />
-            <element signature="e#11847#11958#0" expanded="true" />
-            <element signature="e#11951#11952#0" expanded="true" />
+            <element signature="e#5064#5065#0" expanded="true" />
+            <element signature="e#5119#5120#0" expanded="true" />
+            <element signature="e#5205#5493#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#5681#6049#0" expanded="true" />
+            <element signature="e#6034#6035#0" expanded="true" />
+            <element signature="e#6199#6796#0" expanded="true" />
+            <element signature="e#6781#6782#0" expanded="true" />
+            <element signature="e#13165#13276#0" expanded="true" />
+            <element signature="e#13269#13270#0" expanded="true" />
           </folding>
         </state>
       </provider>
