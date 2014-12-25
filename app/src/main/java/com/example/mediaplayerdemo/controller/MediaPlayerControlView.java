@@ -1,6 +1,12 @@
 package com.example.mediaplayerdemo.controller;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -26,6 +33,8 @@ import java.util.Locale;
 import android.os.Handler;
 import android.os.Message;
 
+import static com.example.mediaplayerdemo.R.color.light_gray;
+
 public class MediaPlayerControlView extends FrameLayout {
     private static final int sDefaultTimeout = 3000;
     private static final int FADE_OUT = 1;
@@ -33,7 +42,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
     private Context mContext;
     private View mRoot;
-    private ImageButton mPauseButton;
+    private ImageView mPauseButton, mReportButton, mShareButton;
     private MyVideoView myVideoView;
     private MySeekBar mSeekBar;
     private TextView mCurrentTime, mEndTime;
@@ -104,13 +113,13 @@ public class MediaPlayerControlView extends FrameLayout {
         mAdView = (AdView) v.findViewById(R.id.adView);
         adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
         if (mLinearLayout != null) {
             mLinearLayout.removeAllViews();
             ViewGroup parent = (ViewGroup) mAdView.getParent();
             if (parent != null) {
-                parent.removeView(mAdView);
+                parent.removeAllViews();
             }
+
             mLinearLayout.addView(mAdView);
         }
     }
@@ -120,7 +129,7 @@ public class MediaPlayerControlView extends FrameLayout {
         Log.d("debug", "refresh Ad!");
     }
 
-    private void setAdViewVisibility(int visibility) {
+    public void setAdViewVisibility(int visibility) {
         mLinearLayout.setVisibility(visibility);
     }
 
@@ -139,6 +148,19 @@ public class MediaPlayerControlView extends FrameLayout {
 
             mPauseButton.requestFocus();
             mPauseButton.setOnClickListener(mPauseListener);
+            mPauseButton.setOnTouchListener(new OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (MotionEvent.ACTION_DOWN == event.getAction()) {
+                        setImageBackground(mPauseButton,getResources().getColor(R.color.light_gray), 1);
+                    } else if (MotionEvent.ACTION_UP == event.getAction()) {
+                        setImageBackground(mPauseButton,getResources().getColor(R.color.white), 1);
+                        v.performClick();
+                    }
+                    return true;
+                }
+            });
+
             mSeekBar.setMax(1000);
             mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -173,18 +195,31 @@ public class MediaPlayerControlView extends FrameLayout {
                 }
             });
 
-        } catch (Exception exception) {
+        } catch (
+                Exception exception
+                )
+
+        {
             exception.printStackTrace();
         }
     }
 
+    private void setImageBackground(ImageView im,int color, int add) {
+        ColorFilter filter;
+        filter = new LightingColorFilter(color, add);
+        im.clearColorFilter();
+        im.setColorFilter(filter);
+    }
+
     private void findViews() {
         myVideoView = (MyVideoView) mRoot.findViewById(R.id.surface_media_player);
-        mPauseButton = (ImageButton) mRoot.findViewById(R.id.mPauseButton);
+        mPauseButton = (ImageView) mRoot.findViewById(R.id.mPauseButton);
         mSeekBar = (MySeekBar) mRoot.findViewById(R.id.seekBar);
         mCurrentTime = (TextView) mRoot.findViewById(R.id.mCurrentTime);
         mEndTime = (TextView) mRoot.findViewById(R.id.mEndTime);
         mLinearLayout = (LinearLayout) mRoot.findViewById(R.id.adLinearLayout);
+        mReportButton = (ImageView) mRoot.findViewById(R.id.mReportButton);
+        mShareButton = (ImageView) mRoot.findViewById(R.id.mShareButton);
     }
 
     private int updateSeekBar() {
@@ -251,6 +286,8 @@ public class MediaPlayerControlView extends FrameLayout {
         mSeekBar.setVisibility(visibility);
         mCurrentTime.setVisibility(visibility);
         mEndTime.setVisibility(visibility);
+        mReportButton.setVisibility(visibility);
+        mShareButton.setVisibility(visibility);
     }
 
     public void updatePausePlay() {
@@ -270,11 +307,13 @@ public class MediaPlayerControlView extends FrameLayout {
             myVideoView.pause();
             showController(sDefaultTimeout);
             setAdViewVisibility(View.VISIBLE);
+            mAdView.resume();
             refreshAdView();
         } else {
             myVideoView.start();
             hideController();
             setAdViewVisibility(View.GONE);
+            mAdView.pause();
         }
         updatePausePlay();
         updateSeekBar();
@@ -299,6 +338,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
     public void autoPlay() {
         myVideoView.autoPlay();
+        setAdViewVisibility(View.GONE);
     }
 
     private View.OnClickListener mPauseListener = new View.OnClickListener() {
