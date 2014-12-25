@@ -109,34 +109,7 @@ public class MediaPlayerControlView extends FrameLayout {
         mAdView = (AdView) v.findViewById(R.id.adView);
         adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-                Log.d("adView", "ad open");
-                int adHeight = mAdView.getHeight();
-                int adWidth = mAdView.getWidth();
-                Log.d("adView", "ad adHeight" + adHeight);
-                Log.d("adView", "ad adWidth" + adWidth);
 
-                mLinearLayout.getLayoutParams().height = adHeight;
-                mLinearLayout.getLayoutParams().width = adWidth;
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                Log.d("adView", "ad loaded");
-
-                int adHeight = mAdView.getHeight();
-                int adWidth = mAdView.getWidth();
-                Log.d("adView", "ad adHeight" + adHeight);
-                Log.d("adView", "ad adWidth" + adWidth);
-
-                mLinearLayout.getLayoutParams().height = adHeight;
-                mLinearLayout.getLayoutParams().width = adWidth;
-            }
-        });
         if (mLinearLayout != null) {
             mLinearLayout.removeAllViews();
             ViewGroup parent = (ViewGroup) mAdView.getParent();
@@ -158,7 +131,22 @@ public class MediaPlayerControlView extends FrameLayout {
 
     private void setListeners() {
         try {
+            mAdView.setAdListener(new AdListener() {
 
+                @Override
+                public void onAdLoaded() {
+                    super.onAdLoaded();
+                    Log.d("adView", "ad loaded");
+
+                    int adHeight = mAdView.getHeight();
+                    int adWidth = mAdView.getWidth();
+                    Log.d("adView", "ad adHeight" + adHeight);
+                    Log.d("adView", "ad adWidth" + adWidth);
+
+                    mLinearLayout.getLayoutParams().height = adHeight;
+                    mLinearLayout.getLayoutParams().width = adWidth;
+                }
+            });
             mOnPreparedListener = new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
