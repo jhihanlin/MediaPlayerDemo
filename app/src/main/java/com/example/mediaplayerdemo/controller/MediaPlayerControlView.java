@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -51,6 +52,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private boolean mDragging;
     public int resumePosition;
     private MediaPlayer.OnPreparedListener mOnPreparedListener;
+    private ProgressBar loadingProgressBar;
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -84,6 +86,8 @@ public class MediaPlayerControlView extends FrameLayout {
         setListeners();
         setAdView();
         setControllerVisibility(View.GONE);
+        loadingProgressBar.setVisibility(View.VISIBLE);
+
         FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
@@ -152,6 +156,7 @@ public class MediaPlayerControlView extends FrameLayout {
                 public void onPrepared(MediaPlayer mp) {
                     Log.d("prepared", "MediaPlayerController : onPrepared!!!!!!");
                     setAdViewVisibility(View.GONE);
+                    loadingProgressBar.setVisibility(View.GONE);
                 }
             };
             mOnPreparedListener.onPrepared(myVideoView.getMediaPlayer());
@@ -247,6 +252,7 @@ public class MediaPlayerControlView extends FrameLayout {
         mLinearLayout = (LinearLayout) mRoot.findViewById(R.id.adLinearLayout);
         mReportButton = (ImageView) mRoot.findViewById(R.id.mReportButton);
         mShareButton = (ImageView) mRoot.findViewById(R.id.mShareButton);
+        loadingProgressBar= (ProgressBar) mRoot.findViewById(R.id.loadingProgressBar);
     }
 
     private int updateSeekBar() {

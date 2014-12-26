@@ -36,8 +36,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
-                android:orientation="horizontal"
                 android:background="@drawable/mockup"
+                android:orientation="horizontal"
                 android:visibility="visible">
 
             </LinearLayout>
@@ -115,10 +115,17 @@
             android:textColor="@color/white"
             android:visibility="visible" />
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6">
+
+            <ProgressBar
+                android:id="@+id/loadingProgressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal" />
 
             <com.example.mediaplayerdemo.util.MySeekBar
                 android:id="@+id/seekBar"
@@ -132,7 +139,7 @@
                 android:thumbOffset="5dp"
                 android:visibility="visible" />
 
-        </RelativeLayout>
+        </FrameLayout>
 
 
         <TextView
