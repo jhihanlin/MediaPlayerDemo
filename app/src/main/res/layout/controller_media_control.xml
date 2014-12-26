@@ -145,7 +145,7 @@
 
         <LinearLayout
             android:id="@+id/bottomController"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_alignParentBottom="true"
             android:layout_weight="1.6"
@@ -156,7 +156,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:text="Current time"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
@@ -164,8 +164,8 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="6">
+                android:layout_height="fill_parent"
+                android:layout_weight="7">
 
                 <ProgressBar
                     android:id="@+id/loadingProgressBar"
@@ -179,12 +179,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="-38dp"
                     android:indeterminate="false"
                     android:progressDrawable="@drawable/custom_seek_bar"
                     android:thumb="@drawable/bar"
                     android:thumbOffset="5dp"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    android:layout_marginBottom="-40dp"
+                    android:layout_gravity="bottom" />
 
             </FrameLayout>
 
@@ -194,7 +195,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:text="Current time"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
