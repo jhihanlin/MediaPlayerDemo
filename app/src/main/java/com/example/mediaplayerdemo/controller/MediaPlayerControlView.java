@@ -1,8 +1,8 @@
 package com.example.mediaplayerdemo.controller;
 
 import android.content.Context;
-import android.graphics.ColorFilter;
-import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuff.Mode;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.mediaplayerdemo.R;
 import com.example.mediaplayerdemo.util.MySeekBar;
+import com.example.mediaplayerdemo.util.WindowSizeUtils;
 import com.example.mediaplayerdemo.widget.MyVideoView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -53,6 +54,8 @@ public class MediaPlayerControlView extends FrameLayout {
     public int resumePosition;
     private MediaPlayer.OnPreparedListener mOnPreparedListener;
     private ProgressBar loadingProgressBar;
+    private TextView mShareText, mReportText;
+    private LinearLayout mLinearLayoutSizeFixed;
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -94,6 +97,7 @@ public class MediaPlayerControlView extends FrameLayout {
         );
 
         addView(mRoot, frameParams);
+        mLinearLayoutSizeFixed.measure(WindowSizeUtils.getWindowWidthSize(mContext), WindowSizeUtils.getWindowHeightSize(mContext));
     }
 
     public void hide() {
@@ -135,7 +139,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
     private void setListeners() {
         try {
-            
+
             mAdView.setAdListener(new AdListener() {
                 @Override
                 public void onAdLoaded() {
@@ -183,9 +187,9 @@ public class MediaPlayerControlView extends FrameLayout {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if (MotionEvent.ACTION_DOWN == event.getAction()) {
-                        setImageBackground(mPauseButton, getResources().getColor(R.color.peach), 1);
+                        setImageBackground(mPauseButton, getResources().getColor(R.color.peach), PorterDuff.Mode.SRC_IN);
                     } else if (MotionEvent.ACTION_UP == event.getAction()) {
-                        setImageBackground(mPauseButton, getResources().getColor(R.color.white), 1);
+                        setImageBackground(mPauseButton, 0xFFFFFFFF, Mode.MULTIPLY);
                         v.performClick();
                     }
                     return true;
@@ -235,16 +239,10 @@ public class MediaPlayerControlView extends FrameLayout {
         }
     }
 
-    private void setImageBackground(ImageView im, int color, int add) {
+    private void setImageBackground(ImageView im, int color, Mode mode) {
         if (im != null) {
-            ColorFilter filter, filter_white;
-            filter = new LightingColorFilter(color, add);
-            filter_white = new LightingColorFilter(getResources().getColor(R.color.white), add);
-            im.clearColorFilter();
-            im.setColorFilter(filter_white);
-            im.setColorFilter(filter);
+            im.setColorFilter(color, mode);
         }
-
     }
 
     private void findViews() {
@@ -257,6 +255,9 @@ public class MediaPlayerControlView extends FrameLayout {
         mReportButton = (ImageView) mRoot.findViewById(R.id.mReportButton);
         mShareButton = (ImageView) mRoot.findViewById(R.id.mShareButton);
         loadingProgressBar = (ProgressBar) mRoot.findViewById(R.id.loadingProgressBar);
+        mShareText = (TextView) mRoot.findViewById(R.id.mShareText);
+        mReportText = (TextView) mRoot.findViewById(R.id.mReportText);
+        mLinearLayoutSizeFixed = (LinearLayout) mRoot.findViewById(R.id.mLinearLayoutSizeFixed);
     }
 
     private int updateSeekBar() {
@@ -318,6 +319,7 @@ public class MediaPlayerControlView extends FrameLayout {
         updateSeekBar();
     }
 
+
     private void setControllerVisibility(int visibility) {
         mPauseButton.setVisibility(visibility);
         mSeekBar.setVisibility(visibility);
@@ -325,6 +327,8 @@ public class MediaPlayerControlView extends FrameLayout {
         mEndTime.setVisibility(visibility);
         mReportButton.setVisibility(visibility);
         mShareButton.setVisibility(visibility);
+        mShareText.setVisibility(visibility);
+        mReportText.setVisibility(visibility);
     }
 
     public void updatePausePlay() {

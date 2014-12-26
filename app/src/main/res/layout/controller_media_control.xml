@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout1"
+    android:id="@+id/mRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
@@ -16,143 +16,190 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/mLinearLayoutSizeFixed"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/bottomController"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-        <RelativeLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:id="@+id/adLinearLayout"
-                android:layout_width="300dp"
-                android:layout_height="250dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/mockup"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-            </LinearLayout>
-        </RelativeLayout>
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="30dp"
-            android:orientation="vertical">
+            android:id="@+id/linearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_above="@+id/bottomController"
+            android:layout_marginTop="20dp"
+            android:layout_weight="8.4"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginRight="30dp"
-                android:layout_weight="3"
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="250dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/mShareButton"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="5"
-                    android:src="@drawable/share"
-                    android:visibility="visible" />
 
-                <ImageView
-                    android:id="@+id/mReportButton"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="5"
-                    android:src="@drawable/report"
-                    android:visibility="visible" />
+                <LinearLayout
+                    android:id="@+id/adLinearLayout"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/mockup"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
 
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right"
-                android:layout_marginRight="60dp"
-                android:layout_weight="7"
-                android:orientation="horizontal">
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/mPauseButton"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="bottom"
-                    android:src="@drawable/video_pause"
-                    android:visibility="visible" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/mShareFrameLayout"
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5">
+
+                        <TextView
+                            android:id="@+id/mShareText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingBottom="13dp"
+                            android:paddingLeft="34dp"
+                            android:paddingTop="14dp"
+                            android:text="Share"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:textStyle="bold|italic" />
+
+                        <ImageView
+                            android:id="@+id/mShareButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:src="@drawable/share"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:id="@+id/mReportFrameLayout"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="13dp"
+                        android:layout_weight="5">
+
+                        <TextView
+                            android:id="@+id/mReportText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="30dp"
+                            android:paddingRight="2dp"
+                            android:paddingTop="3dp"
+                            android:text="Report"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:textStyle="bold|italic" />
+
+                        <ImageView
+                            android:id="@+id/mReportButton"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/report"
+                            android:visibility="visible" />
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="7"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/mPauseButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/video_pause"
+                        android:visibility="visible"
+                        android:layout_gravity="center" />
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bottomController"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1.6"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/bottomController"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/mCurrentTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="2"
-            android:text="Current time"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/white"
-            android:visibility="visible" />
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6">
-
-            <ProgressBar
-                android:id="@+id/loadingProgressBar"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal" />
-
-            <com.example.mediaplayerdemo.util.MySeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/mCurrentTime"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="-38dp"
-                android:indeterminate="false"
-                android:progressDrawable="@drawable/custom_seek_bar"
-                android:thumb="@drawable/bar"
-                android:thumbOffset="5dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="2"
+                android:text="Current time"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white"
                 android:visibility="visible" />
 
-        </FrameLayout>
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6">
+
+                <ProgressBar
+                    android:id="@+id/loadingProgressBar"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <com.example.mediaplayerdemo.util.MySeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="-38dp"
+                    android:indeterminate="false"
+                    android:progressDrawable="@drawable/custom_seek_bar"
+                    android:thumb="@drawable/bar"
+                    android:thumbOffset="5dp"
+                    android:visibility="visible" />
+
+            </FrameLayout>
 
 
-        <TextView
-            android:id="@+id/mEndTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="2"
-            android:text="Current time"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/white"
-            android:visibility="visible" />
+            <TextView
+                android:id="@+id/mEndTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="2"
+                android:text="Current time"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white"
+                android:visibility="visible" />
 
+        </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>

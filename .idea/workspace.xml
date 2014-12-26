@@ -5,7 +5,7 @@
       <filter>
         <option name="logLevel" value="verbose" />
         <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="adView" />
+        <option name="logTagPattern" value="" />
         <option name="name" value="app: com.example.mediaplayerdemo" />
         <option name="packageNamePattern" value="com.example.mediaplayerdemo" />
         <option name="pid" value="" />
@@ -33,7 +33,7 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ad" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.mediaplayerdemo" />
   </component>
   <component name="ChangeListManager">
@@ -62,8 +62,8 @@
       <file leaf-file-name="MediaPlayerActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/activity/MediaPlayerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="645">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -72,7 +72,7 @@
       <file leaf-file-name="MySeekBar.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/util/MySeekBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
+            <state vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="1005">
               <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
@@ -82,16 +82,9 @@
       <file leaf-file-name="MyVideoView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.8846154" vertical-offset="1880" max-vertical-offset="4050">
-              <caret line="149" column="52" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="52" />
-              <folding>
-                <element signature="e#2205#2821#0" expanded="true" />
-                <element signature="e#2810#2811#0" expanded="true" />
-                <element signature="e#8355#8356#0" expanded="true" />
-                <element signature="e#8386#8387#0" expanded="true" />
-                <element signature="e#8538#8539#0" expanded="true" />
-                <element signature="e#8577#8578#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="130.38461" vertical-offset="3420" max-vertical-offset="3930">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,13 +92,23 @@
       <file leaf-file-name="controller_media_control.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml">
           <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.576923" vertical-offset="1622" max-vertical-offset="2445">
-              <caret line="123" column="51" selection-start-line="123" selection-start-column="33" selection-end-line="123" selection-end-column="51" />
+            <state vertical-scroll-proportion="-15.461538" vertical-offset="1263" max-vertical-offset="3150">
+              <caret line="111" column="48" selection-start-line="111" selection-start-column="48" selection-end-line="111" selection-end-column="48" />
               <folding />
             </state>
           </provider>
           <provider selected="true" editor-type-id="android-designer">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WindowSizeUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/util/WindowSizeUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -122,22 +125,15 @@
       <file leaf-file-name="MediaPlayerControlView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/controller/MediaPlayerControlView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49912435" vertical-offset="1770" max-vertical-offset="6315">
-              <caret line="137" column="12" selection-start-line="137" selection-start-column="12" selection-end-line="137" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="5790">
+              <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4124#4125#0" expanded="true" />
-                <element signature="e#4179#4180#0" expanded="true" />
-                <element signature="e#4277#4862#0" expanded="true" />
-                <element signature="e#4847#4848#0" expanded="true" />
-                <element signature="e#4899#5252#0" expanded="true" />
-                <element signature="e#5237#5238#0" expanded="true" />
-                <element signature="e#5440#5947#0" expanded="true" />
-                <element signature="e#5932#5933#0" expanded="true" />
-                <element signature="e#6097#6694#0" expanded="true" />
-                <element signature="e#6679#6680#0" expanded="true" />
-                <element signature="e#13151#13262#0" expanded="true" />
-                <element signature="e#13255#13256#0" expanded="true" />
+                <element signature="e#4404#4405#0" expanded="true" />
+                <element signature="e#4459#4460#0" expanded="true" />
+                <element signature="e#4545#5130#0" expanded="true" />
+                <element signature="e#5115#5116#0" expanded="true" />
+                <element signature="e#13480#13591#0" expanded="true" />
+                <element signature="e#13584#13585#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,7 +142,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="206" max-vertical-offset="705">
+            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="705">
               <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
               <folding />
             </state>
@@ -156,7 +152,7 @@
       <file leaf-file-name="color.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/color.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="255">
               <caret line="7" column="22" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="22" />
               <folding />
             </state>
@@ -166,11 +162,9 @@
       <file leaf-file-name="controller_adview.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_adview.xml">
           <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+            <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="270">
               <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding>
-                <element signature="e#519#546#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
           <provider selected="true" editor-type-id="android-designer">
@@ -732,15 +726,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/fragment/AdFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/controller_pause_adView.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_surface_media_player.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/custom_seek_bar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/util/MySeekBar.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/pause_imageview_click.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/activity/MediaPlayerActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/controller_adview.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/custom_seek_bar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/controller/MediaPlayerControlView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java" />
       </list>
     </option>
   </component>
@@ -775,7 +769,6 @@
       <sortByType ProjectPane="false" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -783,10 +776,6 @@
               <option name="myItemId" value="MediaPlayerDemo" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -810,60 +799,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaPlayerDemo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaPlayerDemo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaPlayerDemo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -988,6 +923,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1035,7 +971,7 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="319" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="432" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
@@ -1240,7 +1176,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="811" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="811" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1256,8 +1192,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15683453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10071942" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5410072" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18848921" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1278,15 +1214,15 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2086331" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18454936" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="513" y="153" width="414" height="550" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24316546" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24316546" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1300,8 +1236,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12086331" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15251799" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1330,26 +1266,11 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/activity/MediaPlayerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="795">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="4230">
           <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding>
-            <element signature="e#2205#2821#0" expanded="true" />
-            <element signature="e#2810#2811#0" expanded="true" />
-            <element signature="e#8355#8356#0" expanded="true" />
-            <element signature="e#8386#8387#0" expanded="true" />
-            <element signature="e#8538#8539#0" expanded="true" />
-            <element signature="e#8577#8578#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1380,19 +1301,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2055" max-vertical-offset="5130">
           <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4124#4125#0" expanded="true" />
-            <element signature="e#4179#4180#0" expanded="true" />
-            <element signature="e#4277#4862#0" expanded="true" />
-            <element signature="e#4847#4848#0" expanded="true" />
-            <element signature="e#4899#5252#0" expanded="true" />
-            <element signature="e#5237#5238#0" expanded="true" />
-            <element signature="e#5440#5947#0" expanded="true" />
-            <element signature="e#5932#5933#0" expanded="true" />
-            <element signature="e#6097#6694#0" expanded="true" />
-            <element signature="e#6679#6680#0" expanded="true" />
-            <element signature="e#13151#13262#0" expanded="true" />
-            <element signature="e#13255#13256#0" expanded="true" />
+            <element signature="e#4404#4405#0" expanded="true" />
+            <element signature="e#4459#4460#0" expanded="true" />
+            <element signature="e#4545#5130#0" expanded="true" />
+            <element signature="e#5115#5116#0" expanded="true" />
+            <element signature="e#13480#13591#0" expanded="true" />
+            <element signature="e#13584#13585#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1444,14 +1358,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="4230">
           <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding>
-            <element signature="e#2205#2821#0" expanded="true" />
-            <element signature="e#2810#2811#0" expanded="true" />
-            <element signature="e#8355#8356#0" expanded="true" />
-            <element signature="e#8386#8387#0" expanded="true" />
-            <element signature="e#8538#8539#0" expanded="true" />
-            <element signature="e#8577#8578#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1482,19 +1389,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2340" max-vertical-offset="5130">
           <caret line="156" column="53" selection-start-line="156" selection-start-column="53" selection-end-line="156" selection-end-column="53" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4124#4125#0" expanded="true" />
-            <element signature="e#4179#4180#0" expanded="true" />
-            <element signature="e#4277#4862#0" expanded="true" />
-            <element signature="e#4847#4848#0" expanded="true" />
-            <element signature="e#4899#5252#0" expanded="true" />
-            <element signature="e#5237#5238#0" expanded="true" />
-            <element signature="e#5440#5947#0" expanded="true" />
-            <element signature="e#5932#5933#0" expanded="true" />
-            <element signature="e#6097#6694#0" expanded="true" />
-            <element signature="e#6679#6680#0" expanded="true" />
-            <element signature="e#13151#13262#0" expanded="true" />
-            <element signature="e#13255#13256#0" expanded="true" />
+            <element signature="e#4404#4405#0" expanded="true" />
+            <element signature="e#4459#4460#0" expanded="true" />
+            <element signature="e#4545#5130#0" expanded="true" />
+            <element signature="e#5115#5116#0" expanded="true" />
+            <element signature="e#13480#13591#0" expanded="true" />
+            <element signature="e#13584#13585#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1546,14 +1446,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="991" max-vertical-offset="3990">
           <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
-          <folding>
-            <element signature="e#2205#2821#0" expanded="true" />
-            <element signature="e#2810#2811#0" expanded="true" />
-            <element signature="e#8355#8356#0" expanded="true" />
-            <element signature="e#8386#8387#0" expanded="true" />
-            <element signature="e#8538#8539#0" expanded="true" />
-            <element signature="e#8577#8578#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1584,19 +1477,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2776" max-vertical-offset="5490">
           <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4124#4125#0" expanded="true" />
-            <element signature="e#4179#4180#0" expanded="true" />
-            <element signature="e#4277#4862#0" expanded="true" />
-            <element signature="e#4847#4848#0" expanded="true" />
-            <element signature="e#4899#5252#0" expanded="true" />
-            <element signature="e#5237#5238#0" expanded="true" />
-            <element signature="e#5440#5947#0" expanded="true" />
-            <element signature="e#5932#5933#0" expanded="true" />
-            <element signature="e#6097#6694#0" expanded="true" />
-            <element signature="e#6679#6680#0" expanded="true" />
-            <element signature="e#13151#13262#0" expanded="true" />
-            <element signature="e#13255#13256#0" expanded="true" />
+            <element signature="e#4404#4405#0" expanded="true" />
+            <element signature="e#4459#4460#0" expanded="true" />
+            <element signature="e#4545#5130#0" expanded="true" />
+            <element signature="e#5115#5116#0" expanded="true" />
+            <element signature="e#13480#13591#0" expanded="true" />
+            <element signature="e#13584#13585#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1651,14 +1537,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="4050">
           <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-          <folding>
-            <element signature="e#2205#2821#0" expanded="true" />
-            <element signature="e#2810#2811#0" expanded="true" />
-            <element signature="e#8355#8356#0" expanded="true" />
-            <element signature="e#8386#8387#0" expanded="true" />
-            <element signature="e#8538#8539#0" expanded="true" />
-            <element signature="e#8577#8578#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1667,19 +1546,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1227" max-vertical-offset="2970">
           <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4124#4125#0" expanded="true" />
-            <element signature="e#4179#4180#0" expanded="true" />
-            <element signature="e#4277#4862#0" expanded="true" />
-            <element signature="e#4847#4848#0" expanded="true" />
-            <element signature="e#4899#5252#0" expanded="true" />
-            <element signature="e#5237#5238#0" expanded="true" />
-            <element signature="e#5440#5947#0" expanded="true" />
-            <element signature="e#5932#5933#0" expanded="true" />
-            <element signature="e#6097#6694#0" expanded="true" />
-            <element signature="e#6679#6680#0" expanded="true" />
-            <element signature="e#13151#13262#0" expanded="true" />
-            <element signature="e#13255#13256#0" expanded="true" />
+            <element signature="e#4404#4405#0" expanded="true" />
+            <element signature="e#4459#4460#0" expanded="true" />
+            <element signature="e#4545#5130#0" expanded="true" />
+            <element signature="e#5115#5116#0" expanded="true" />
+            <element signature="e#13480#13591#0" expanded="true" />
+            <element signature="e#13584#13585#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1757,14 +1629,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/custom_seek_bar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10135135" vertical-offset="0" max-vertical-offset="660">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/util/MySeekBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
@@ -1791,14 +1655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/activity/MediaPlayerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="705">
@@ -1811,13 +1667,19 @@
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#519#546#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/custom_seek_bar.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.030150754" vertical-offset="63" max-vertical-offset="660">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pause_imageview_click.xml">
@@ -1830,8 +1692,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml">
       <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.576923" vertical-offset="1622" max-vertical-offset="2430">
-          <caret line="123" column="51" selection-start-line="123" selection-start-column="33" selection-end-line="123" selection-end-column="51" />
+        <state vertical-scroll-proportion="-15.461538" vertical-offset="1263" max-vertical-offset="3150">
+          <caret line="111" column="48" selection-start-line="111" selection-start-column="48" selection-end-line="111" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1841,37 +1703,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/widget/MyVideoView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8846154" vertical-offset="1880" max-vertical-offset="4050">
-          <caret line="149" column="52" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="52" />
-          <folding>
-            <element signature="e#2205#2821#0" expanded="true" />
-            <element signature="e#2810#2811#0" expanded="true" />
-            <element signature="e#8355#8356#0" expanded="true" />
-            <element signature="e#8386#8387#0" expanded="true" />
-            <element signature="e#8538#8539#0" expanded="true" />
-            <element signature="e#8577#8578#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="130.38461" vertical-offset="3420" max-vertical-offset="3930">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/util/WindowSizeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/activity/MediaPlayerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="645">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/controller/MediaPlayerControlView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49912435" vertical-offset="1770" max-vertical-offset="6315">
-          <caret line="137" column="12" selection-start-line="137" selection-start-column="12" selection-end-line="137" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="5790">
+          <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4124#4125#0" expanded="true" />
-            <element signature="e#4179#4180#0" expanded="true" />
-            <element signature="e#4277#4862#0" expanded="true" />
-            <element signature="e#4847#4848#0" expanded="true" />
-            <element signature="e#4899#5252#0" expanded="true" />
-            <element signature="e#5237#5238#0" expanded="true" />
-            <element signature="e#5440#5947#0" expanded="true" />
-            <element signature="e#5932#5933#0" expanded="true" />
-            <element signature="e#6097#6694#0" expanded="true" />
-            <element signature="e#6679#6680#0" expanded="true" />
-            <element signature="e#13151#13262#0" expanded="true" />
-            <element signature="e#13255#13256#0" expanded="true" />
+            <element signature="e#4404#4405#0" expanded="true" />
+            <element signature="e#4459#4460#0" expanded="true" />
+            <element signature="e#4545#5130#0" expanded="true" />
+            <element signature="e#5115#5116#0" expanded="true" />
+            <element signature="e#13480#13591#0" expanded="true" />
+            <element signature="e#13584#13585#0" expanded="true" />
           </folding>
         </state>
       </provider>
