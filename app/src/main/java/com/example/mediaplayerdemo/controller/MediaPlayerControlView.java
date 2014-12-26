@@ -135,8 +135,8 @@ public class MediaPlayerControlView extends FrameLayout {
 
     private void setListeners() {
         try {
+            
             mAdView.setAdListener(new AdListener() {
-
                 @Override
                 public void onAdLoaded() {
                     super.onAdLoaded();
@@ -167,7 +167,11 @@ public class MediaPlayerControlView extends FrameLayout {
                 public boolean onTouch(View v, MotionEvent event) {
                     Log.d("debug", "onTouch");
                     if (myVideoView.isInPlaybackState()) {
-                        showController(sDefaultTimeout);
+                        if (mShowing) {
+                            hide();
+                        } else {
+                            showController(sDefaultTimeout);
+                        }
                     }
                     return false;
                 }
@@ -252,7 +256,7 @@ public class MediaPlayerControlView extends FrameLayout {
         mLinearLayout = (LinearLayout) mRoot.findViewById(R.id.adLinearLayout);
         mReportButton = (ImageView) mRoot.findViewById(R.id.mReportButton);
         mShareButton = (ImageView) mRoot.findViewById(R.id.mShareButton);
-        loadingProgressBar= (ProgressBar) mRoot.findViewById(R.id.loadingProgressBar);
+        loadingProgressBar = (ProgressBar) mRoot.findViewById(R.id.loadingProgressBar);
     }
 
     private int updateSeekBar() {
