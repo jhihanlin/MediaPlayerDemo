@@ -56,6 +56,9 @@ public class MediaPlayerControlView extends FrameLayout {
     private ProgressBar loadingProgressBar;
     private TextView mShareText, mReportText;
     private LinearLayout mLinearLayoutSizeFixed;
+    private FrameLayout mShareFrameLayout;
+    private FrameLayout mReportFrameLayout;
+    private int touchButtonColor = getResources().getColor(R.color.peach);
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -180,22 +183,65 @@ public class MediaPlayerControlView extends FrameLayout {
                     return false;
                 }
             });
-
             mPauseButton.requestFocus();
             mPauseButton.setOnClickListener(mPauseListener);
             mPauseButton.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     if (MotionEvent.ACTION_DOWN == event.getAction()) {
-                        setImageBackground(mPauseButton, getResources().getColor(R.color.peach), PorterDuff.Mode.SRC_IN);
+                        if (mPauseButton != null) {
+                            mPauseButton.setColorFilter(touchButtonColor, PorterDuff.Mode.SRC_IN);
+                        }
                     } else if (MotionEvent.ACTION_UP == event.getAction()) {
-                        setImageBackground(mPauseButton, 0xFFFFFFFF, Mode.MULTIPLY);
+                        mPauseButton.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
                         v.performClick();
                     }
                     return true;
                 }
             });
 
+            mShareFrameLayout.setOnClickListener(mShareListener);
+            mShareFrameLayout.setOnTouchListener(new OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    ImageView mShareIcon = (ImageView) mShareFrameLayout.getChildAt(1);
+                    TextView mShareText = (TextView) mShareFrameLayout.getChildAt(0);
+                    if (MotionEvent.ACTION_DOWN == event.getAction()) {
+                        if (mShareFrameLayout != null) {
+                            mShareIcon.setColorFilter(touchButtonColor, PorterDuff.Mode.SRC_IN);
+                            mShareText.setTextColor(touchButtonColor);
+                        }
+                    } else if (MotionEvent.ACTION_UP == event.getAction()) {
+                        if (mShareFrameLayout != null) {
+                            mShareIcon.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
+                            mShareText.setTextColor(0xFFFFFFFF);
+                        }
+                        v.performClick();
+                    }
+                    return true;
+                }
+            });
+            mReportFrameLayout.setOnClickListener(mReportListener);
+            mReportFrameLayout.setOnTouchListener(new OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    ImageView mReportIcon = (ImageView) mReportFrameLayout.getChildAt(1);
+                    TextView mReportText = (TextView) mReportFrameLayout.getChildAt(0);
+                    if (MotionEvent.ACTION_DOWN == event.getAction()) {
+                        if (mReportFrameLayout != null) {
+                            mReportIcon.setColorFilter(touchButtonColor, PorterDuff.Mode.SRC_IN);
+                            mReportText.setTextColor(touchButtonColor);
+                        }
+                    } else if (MotionEvent.ACTION_UP == event.getAction()) {
+                        if (mReportFrameLayout != null) {
+                            mReportIcon.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
+                            mReportText.setTextColor(0xFFFFFFFF);
+                        }
+                        v.performClick();
+                    }
+                    return true;
+                }
+            });
             mSeekBar.setMax(1000);
             mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -239,12 +285,6 @@ public class MediaPlayerControlView extends FrameLayout {
         }
     }
 
-    private void setImageBackground(ImageView im, int color, Mode mode) {
-        if (im != null) {
-            im.setColorFilter(color, mode);
-        }
-    }
-
     private void findViews() {
         myVideoView = (MyVideoView) mRoot.findViewById(R.id.surface_media_player);
         mPauseButton = (ImageView) mRoot.findViewById(R.id.mPauseButton);
@@ -258,6 +298,8 @@ public class MediaPlayerControlView extends FrameLayout {
         mShareText = (TextView) mRoot.findViewById(R.id.mShareText);
         mReportText = (TextView) mRoot.findViewById(R.id.mReportText);
         mLinearLayoutSizeFixed = (LinearLayout) mRoot.findViewById(R.id.mLinearLayoutSizeFixed);
+        mShareFrameLayout = (FrameLayout) mRoot.findViewById(R.id.mShareFrameLayout);
+        mReportFrameLayout = (FrameLayout) mRoot.findViewById(R.id.mReportFrameLayout);
     }
 
     private int updateSeekBar() {
@@ -385,6 +427,21 @@ public class MediaPlayerControlView extends FrameLayout {
     private View.OnClickListener mPauseListener = new View.OnClickListener() {
         public void onClick(View v) {
             doPauseResume();
+        }
+    };
+
+    private OnClickListener mShareListener = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            Log.d("debug", "mShareListener");
+
+        }
+    };
+    private OnClickListener mReportListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d("debug", "mReportListener");
         }
     };
 
