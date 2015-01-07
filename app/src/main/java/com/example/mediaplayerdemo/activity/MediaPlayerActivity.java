@@ -4,12 +4,9 @@ import com.example.mediaplayerdemo.R;
 import com.example.mediaplayerdemo.controller.MediaPlayerControlView;
 import com.example.mediaplayerdemo.widget.MyVideoView;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
 
 public class MediaPlayerActivity extends FragmentActivity {
 

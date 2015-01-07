@@ -6,6 +6,7 @@ import android.graphics.PorterDuff.Mode;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -91,6 +92,7 @@ public class MediaPlayerControlView extends FrameLayout {
         findViews();
         setListeners();
         setAdView();
+        setAdViewVisibility(View.GONE);
         setControllerVisibility(View.GONE);
         loadingProgressBar.setVisibility(View.VISIBLE);
 
@@ -140,9 +142,9 @@ public class MediaPlayerControlView extends FrameLayout {
         mLinearLayout.setVisibility(visibility);
     }
 
+
     private void setListeners() {
         try {
-
             mAdView.setAdListener(new AdListener() {
                 @Override
                 public void onAdLoaded() {
@@ -172,7 +174,8 @@ public class MediaPlayerControlView extends FrameLayout {
             myVideoView.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    Log.d("debug", "onTouch");
+                    Log.d("touchListener", "on Touch ");
+
                     if (myVideoView.isInPlaybackState()) {
                         if (mShowing) {
                             hide();
@@ -305,6 +308,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private int updateSeekBar() {
         int position = myVideoView.getCurrentPosition();
         int duration = myVideoView.getDuration();
+
         if (duration > 0) {
             int seekBarPosition = (int) (((double) position / duration) * 1000);
             mSeekBar.setProgress(seekBarPosition);
@@ -359,6 +363,7 @@ public class MediaPlayerControlView extends FrameLayout {
         setControllerVisibility(View.GONE);
         updatePausePlay();
         updateSeekBar();
+
     }
 
 
@@ -445,6 +450,46 @@ public class MediaPlayerControlView extends FrameLayout {
         }
     };
 
+    private GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener() {
+        @Override
+        public boolean onDown(MotionEvent e) {
+            Log.d("Gesture", "onDown");
+            return false;
+        }
+
+        @Override
+        public void onShowPress(MotionEvent e) {
+            Log.d("Gesture", "onShowPress");
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            Log.d("Gesture", "onSingleTapUp");
+            return false;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            Log.d("Gesture", "onScroll");
+            Log.d("Gesture", "onScroll" + distanceX);
+            Log.d("Gesture", "onScroll" + distanceY);
+
+
+            return false;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+            Log.d("Gesture", "onLongPress");
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            Log.d("Gesture", "onFling" + e1.toString() + e2.toString());
+            return false;
+        }
+    };
+
     private static class MessageHandler extends Handler {
         private final WeakReference<MediaPlayerControlView> mView;
 
@@ -473,5 +518,14 @@ public class MediaPlayerControlView extends FrameLayout {
                     break;
             }
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.d("touchListener", "dispatchTouchEvent");
+        GestureDetector mGestureDetector = new GestureDetector(mContext, listener);
+        mGestureDetector.onTouchEvent(ev);
+
+        return super.dispatchTouchEvent(ev);
     }
 }
