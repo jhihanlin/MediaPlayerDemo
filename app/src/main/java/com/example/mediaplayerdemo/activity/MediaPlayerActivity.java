@@ -1,9 +1,7 @@
 package com.example.mediaplayerdemo.activity;
 
+import com.example.jhihanlin.dramotmediaplayer.controller.MediaPlayerControlView;
 import com.example.mediaplayerdemo.R;
-import com.example.mediaplayerdemo.controller.MediaPlayerControlView;
-import com.example.mediaplayerdemo.widget.MyVideoView;
-
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;

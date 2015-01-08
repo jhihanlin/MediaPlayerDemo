@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.mediaplayerdemo.activity.MediaPlayerActivity">
 
-    <com.example.mediaplayerdemo.controller.MediaPlayerControlView
+    <com.example.jhihanlin.dramotmediaplayer.controller.MediaPlayerControlView
         android:id="@+id/surface_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.example.mediaplayerdemo.controller.MediaPlayerControlView>
+        android:layout_height="wrap_content"></com.example.jhihanlin.dramotmediaplayer.controller.MediaPlayerControlView>
 </RelativeLayout>

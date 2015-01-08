@@ -1,10 +1,13 @@
 package com.example.jhihanlin.dramotmediaplayer.controller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.PorterDuff.Mode;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -65,6 +68,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private int touchButtonColor = getResources().getColor(R.color.peach);
     private int showFastForwardTime, newSeekBarProgress;
     private long newPosition;
+    private String showSeekBarText;
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -514,32 +518,6 @@ public class MediaPlayerControlView extends FrameLayout {
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             if (myVideoView.isInPlaybackState()) {
-                if (distanceX > 0)
-                    mIsScrolling = 1;
-                else
-                    mIsScrolling = -1;
-
-                int MAX_WIDTH = WindowSizeUtils.getWindowWidthSize(mContext);
-
-                //compute fast-forward from gesture to seekbar
-                int percent = 30;
-                newSeekBarProgress = mSeekBar.getProgress() + percent * mIsScrolling;
-                long duration = myVideoView.getDuration();
-                newPosition = (duration * newSeekBarProgress) / 1000L;
-
-                Log.d("debug", "------------------------");
-                Log.d("debug", "mSeekBar.getProgress(): " + mSeekBar.getProgress());
-                Log.d("debug", "newSeekBarProgress: " + newSeekBarProgress + " duration: " + duration + " newPosition: " + newPosition);
-                Log.d("debug", "------------------------");
-                showFastForwardTime = (int) ((newPosition + newSeekBarProgress) / 1000L);
-
-                if (showFastForwardTime == -1) {
-                    showFastForwardTime = showFastForwardTime * -1;
-                }
-
-                Log.d("debug", "showFastForward: " + showFastForwardTime);
-
-                showFastForward.setVisibility(View.VISIBLE);
 
                 if (e1 != null) {
                     firstScrollEvent = e1;
@@ -556,18 +534,57 @@ public class MediaPlayerControlView extends FrameLayout {
 
                 Log.d("Gesture", "onScroll" + distanceX);
                 Log.d("Gesture", "onScroll" + distanceY);
-                Log.d("Gesture", "width % = " + distanceX / MAX_WIDTH);
                 Log.d("Gesture", "--------------------");
 
                 lastScrollEvent = e2;
                 lastOnScrollTime = new Date().getTime();
 
+                Display disp = ((Activity)mContext).getWindowManager().getDefaultDisplay();
+                int windowWidth = disp.getWidth();
+
+                int percent = (int) ((Math.abs(lastScrollEvent.getRawX()-firstScrollEvent.getRawX()) / windowWidth) * 1000 );
+//                int percent = 300;
+                Log.d("debug", "width %: " + (Math.abs(lastScrollEvent.getRawX()-firstScrollEvent.getRawX()) / windowWidth));
+                Log.d("debug", "windowWidth: " + windowWidth);
+                Log.d("debug", "percent: " + percent);
+
+                if (distanceX > 0){
+                    mIsScrolling = -1;
+                }
+                else{
+                    mIsScrolling = 1;
+                }
+
+                newSeekBarProgress = mSeekBar.getProgress() + percent * mIsScrolling;
+                Log.d("debug", "newSeekBarProgress: " + newSeekBarProgress);
+                Log.d("debug", "newSeekBarProgress: " + newSeekBarProgress);
+
+                long duration = myVideoView.getDuration();
+                newPosition = (duration * newSeekBarProgress) / 1000L;
+
+                showFastForwardTime = (int) ((newPosition + newSeekBarProgress));
+
+                Log.d("debug", "showFastForward: " + showFastForwardTime);
+                Log.d("debug", "showSeekBarText: " + showSeekBarText);
+
+                if (showFastForwardTime < 0) {
+                    showFastForwardTime = 0;
+                }
+                if (showFastForwardTime > duration ) {
+                    showFastForwardTime = (int) duration;
+                }
+
+                showSeekBarText = stringForTime(showFastForwardTime);
+
+                showFastForward.setVisibility(View.VISIBLE);
+
                 Message msg = mHandler.obtainMessage(FASTFORWARD_SHOW_TEXTVIEW);
-                mHandler.sendMessageDelayed(msg, 100);
+                mHandler.sendMessageDelayed(msg, 0);
 
                 return false;
-            } else
+            } else {
                 return false;
+            }
         }
 
         @Override
@@ -611,11 +628,14 @@ public class MediaPlayerControlView extends FrameLayout {
                 case PREPARE_SHOW_CONTROLLER:
                     long timeSegment = new Date().getTime() - view.lastOnScrollTime;
 
-                    if (timeSegment < 500) break;
+                    if (timeSegment < 500) {
+                        view.hide();
+                        break;
+                    }
                     view.showController(sDefaultTimeout);
                     break;
                 case FASTFORWARD_SHOW_TEXTVIEW:
-                    view.showFastForward.setText("time:" + view.showFastForwardTime + " sec");
+                    view.showFastForward.setText(view.showSeekBarText);
                     break;
             }
         }

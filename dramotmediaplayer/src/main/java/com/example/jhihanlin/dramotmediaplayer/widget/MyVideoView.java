@@ -288,7 +288,10 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     public void setURI(String uri){
         URIString=uri;
     }
+
     public String getURI(){
         return URIString;
     }
+
+
 }
