@@ -1,7 +1,7 @@
-package com.example.mediaplayerdemo.controller;
+package com.example.jhihanlin.dramotmediaplayer.controller;
 
 import android.content.Context;
-import android.graphics.PorterDuff;
+import android.graphics.PorterDuff.Mode;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -17,10 +17,10 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.mediaplayerdemo.R;
-import com.example.mediaplayerdemo.util.MySeekBar;
-import com.example.mediaplayerdemo.util.WindowSizeUtils;
-import com.example.mediaplayerdemo.widget.MyVideoView;
+import com.example.jhihanlin.dramotmediaplayer.R;
+import com.example.jhihanlin.dramotmediaplayer.util.MySeekBar;
+import com.example.jhihanlin.dramotmediaplayer.util.WindowSizeUtils;
+import com.example.jhihanlin.dramotmediaplayer.widget.MyVideoView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -42,7 +42,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
     private Context mContext;
     private View mRoot;
-    public ImageView mPauseButton, mReportButton, mShareButton;
+    private ImageView mPauseButton, mReportButton, mShareButton;
     private MyVideoView myVideoView;
     private MySeekBar mSeekBar;
     private TextView mCurrentTime, mEndTime, showFastForward;
@@ -63,7 +63,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private FrameLayout mShareFrameLayout;
     private FrameLayout mReportFrameLayout;
     private int touchButtonColor = getResources().getColor(R.color.peach);
-    private int showFastForwardTime,newSeekBarProgress;
+    private int showFastForwardTime, newSeekBarProgress;
     private long newPosition;
 
     public MediaPlayerControlView(Context context) {
@@ -105,7 +105,7 @@ public class MediaPlayerControlView extends FrameLayout {
         setControllerVisibility(View.GONE);
         loadingProgressBar.setVisibility(View.VISIBLE);
 
-        FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
+        LayoutParams frameParams = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
         );
@@ -221,10 +221,10 @@ public class MediaPlayerControlView extends FrameLayout {
                 public boolean onTouch(View v, MotionEvent event) {
                     if (MotionEvent.ACTION_DOWN == event.getAction()) {
                         if (mPauseButton != null) {
-                            mPauseButton.setColorFilter(touchButtonColor, PorterDuff.Mode.SRC_IN);
+                            mPauseButton.setColorFilter(touchButtonColor, Mode.SRC_IN);
                         }
                     } else if (MotionEvent.ACTION_UP == event.getAction()) {
-                        mPauseButton.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
+                        mPauseButton.setColorFilter(0xFFFFFFFF, Mode.MULTIPLY);
                         v.performClick();
                     }
                     return true;
@@ -239,12 +239,12 @@ public class MediaPlayerControlView extends FrameLayout {
                     TextView mShareText = (TextView) mShareFrameLayout.getChildAt(0);
                     if (MotionEvent.ACTION_DOWN == event.getAction()) {
                         if (mShareFrameLayout != null) {
-                            mShareIcon.setColorFilter(touchButtonColor, PorterDuff.Mode.SRC_IN);
+                            mShareIcon.setColorFilter(touchButtonColor, Mode.SRC_IN);
                             mShareText.setTextColor(touchButtonColor);
                         }
                     } else if (MotionEvent.ACTION_UP == event.getAction()) {
                         if (mShareFrameLayout != null) {
-                            mShareIcon.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
+                            mShareIcon.setColorFilter(0xFFFFFFFF, Mode.MULTIPLY);
                             mShareText.setTextColor(0xFFFFFFFF);
                         }
                         v.performClick();
@@ -260,12 +260,12 @@ public class MediaPlayerControlView extends FrameLayout {
                     TextView mReportText = (TextView) mReportFrameLayout.getChildAt(0);
                     if (MotionEvent.ACTION_DOWN == event.getAction()) {
                         if (mReportFrameLayout != null) {
-                            mReportIcon.setColorFilter(touchButtonColor, PorterDuff.Mode.SRC_IN);
+                            mReportIcon.setColorFilter(touchButtonColor, Mode.SRC_IN);
                             mReportText.setTextColor(touchButtonColor);
                         }
                     } else if (MotionEvent.ACTION_UP == event.getAction()) {
                         if (mReportFrameLayout != null) {
-                            mReportIcon.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
+                            mReportIcon.setColorFilter(0xFFFFFFFF, Mode.MULTIPLY);
                             mReportText.setTextColor(0xFFFFFFFF);
                         }
                         v.performClick();
@@ -458,7 +458,7 @@ public class MediaPlayerControlView extends FrameLayout {
         setAdViewVisibility(View.VISIBLE);
     }
 
-    private View.OnClickListener mPauseListener = new View.OnClickListener() {
+    private OnClickListener mPauseListener = new OnClickListener() {
         public void onClick(View v) {
             doPauseResume();
         }
@@ -479,11 +479,12 @@ public class MediaPlayerControlView extends FrameLayout {
         }
     };
 
-    public ImageView getShareButton(){
-        return  mShareButton;
+    public ImageView getShareButton() {
+        return mShareButton;
     }
-    public ImageView getReportButton(){
-        return  mReportButton;
+
+    public ImageView getReportButton() {
+        return mReportButton;
     }
 
     private MotionEvent firstScrollEvent;
@@ -512,7 +513,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            if(myVideoView.isInPlaybackState()){
+            if (myVideoView.isInPlaybackState()) {
                 if (distanceX > 0)
                     mIsScrolling = 1;
                 else
@@ -532,8 +533,8 @@ public class MediaPlayerControlView extends FrameLayout {
                 Log.d("debug", "------------------------");
                 showFastForwardTime = (int) ((newPosition + newSeekBarProgress) / 1000L);
 
-                if(showFastForwardTime==-1){
-                    showFastForwardTime =showFastForwardTime * -1;
+                if (showFastForwardTime == -1) {
+                    showFastForwardTime = showFastForwardTime * -1;
                 }
 
                 Log.d("debug", "showFastForward: " + showFastForwardTime);
@@ -565,8 +566,8 @@ public class MediaPlayerControlView extends FrameLayout {
                 mHandler.sendMessageDelayed(msg, 100);
 
                 return false;
-            }else
-            return false;
+            } else
+                return false;
         }
 
         @Override

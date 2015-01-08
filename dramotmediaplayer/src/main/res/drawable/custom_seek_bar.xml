@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 背景圖，不可加clip樹醒，否則不會顯示效果 -->
+    <item android:id="@android:id/background">
+        <inset
+            android:insetBottom="5dip"
+            android:insetTop="5dip">
+            <shape>
+                <solid android:color="@color/white" />
+            </shape>
+        </inset>
+    </item>
+    <!--     第二進度條，增加inset屬性可以避免thumb上下被擠壓遮住，三處都要寫 -->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <inset
+                android:insetBottom="5dip"
+                android:insetTop="5dip">
+                <shape>
+                    <solid android:color="@color/light_gray" />
+                </shape>
+            </inset>
+        </clip>
+    </item>
+    <!-- 第一進度條，必須放在第二進度條下面，否則會被第二進度條覆蓋而看不到效果 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <inset
+                android:insetBottom="5dip"
+                android:insetTop="5dip">
+                <shape>
+                    <solid android:color="@color/pink" />
+                </shape>
+            </inset>
+        </clip>
+    </item>
+
+</layer-list>
