@@ -91,6 +91,10 @@ public class MediaPlayerControlView extends FrameLayout {
             init();
     }
 
+    public void setVideo(String videoURI) {
+        myVideoView.setURI(videoURI);
+    }
+
     protected void init() {
         LayoutInflater inflate = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mRoot = inflate.inflate(R.layout.controller_media_control, null);

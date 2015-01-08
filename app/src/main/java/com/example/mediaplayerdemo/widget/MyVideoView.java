@@ -41,7 +41,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
     public int mCurrentBufferPercentage;
     public MediaPlayer.OnPreparedListener newPreparedListener;
     public MediaPlayer.OnPreparedListener mPreparedListener;
-
+    private String URIString;
     public MyVideoView(Context context) {
         super(context);
         init(context);
@@ -123,7 +123,7 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
                 mediaPlayer.reset();
                 mCurrentBufferPercentage = 0;
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                mediaPlayer.setDataSource(context, Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
+                mediaPlayer.setDataSource(context, Uri.parse(getURI()));
                 mediaPlayer.setDisplay(this.getHolder());
                 mediaPlayer.prepareAsync();
                 mediaPlayer.setOnBufferingUpdateListener(this);
@@ -285,4 +285,10 @@ public class MyVideoView extends SurfaceView implements SurfaceHolder.Callback,
         newPreparedListener = l;
     }
 
+    public void setURI(String uri){
+        URIString=uri;
+    }
+    public String getURI(){
+        return URIString;
+    }
 }

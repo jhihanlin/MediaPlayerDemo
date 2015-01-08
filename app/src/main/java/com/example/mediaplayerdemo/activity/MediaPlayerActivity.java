@@ -19,6 +19,7 @@ public class MediaPlayerActivity extends FragmentActivity {
         setContentView(R.layout.activity_surface_media_player);
 
         mediaPlayerControlView = (MediaPlayerControlView) findViewById(R.id.surface_container);
+        mediaPlayerControlView.setVideo("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
         mediaPlayerControlView.autoPlay();
     }
     @Override
