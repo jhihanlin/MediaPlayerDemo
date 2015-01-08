@@ -27,6 +27,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.lang.ref.WeakReference;
+import java.util.Date;
 import java.util.Formatter;
 import java.util.Locale;
 
@@ -37,6 +38,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private static final int sDefaultTimeout = 3000;
     private static final int FADE_OUT = 1;
     private static final int SHOW_PROGRESS = 2;
+    private static final int PREPARE_SHOW_CONTROLLER = 3;
 
     private Context mContext;
     private View mRoot;
@@ -52,6 +54,7 @@ public class MediaPlayerControlView extends FrameLayout {
     private Handler mHandler = new MessageHandler(this);
     private boolean mShowing;
     private boolean mDragging;
+    private int mIsScrolling;
     public int resumePosition;
     private MediaPlayer.OnPreparedListener mOnPreparedListener;
     private ProgressBar loadingProgressBar;
@@ -172,18 +175,43 @@ public class MediaPlayerControlView extends FrameLayout {
             myVideoView.setOnPreparedListener(mOnPreparedListener);
 
             myVideoView.setOnTouchListener(new OnTouchListener() {
+                private GestureDetector mGestureDetector = new GestureDetector(mContext, gesturelistener);
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    Log.d("touchListener", "on Touch ");
 
-                    if (myVideoView.isInPlaybackState()) {
+
+                    Log.d("touchListener", "on Touch ");
+                    mGestureDetector.onTouchEvent(event);
+
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        Log.d("touchListener", "ACTION UP");
+                        if (mIsScrolling != 0) {
+
+                            int percent = 30;
+                            int newSeekBarProgress = mSeekBar.getProgress() + percent * mIsScrolling;
+
+                            long duration = myVideoView.getDuration();
+                            long newPosition = (duration * newSeekBarProgress) / 1000L;
+
+                            myVideoView.seekTo((int) newPosition);
+                            mSeekBar.setProgress(newSeekBarProgress);
+                            updateSeekBar();
+
+                            Log.d("debug", "newSeekBarProgress: "+ newSeekBarProgress + " duration: " + duration + " newPosition: " + newPosition);
+                            mIsScrolling  = 0;
+                        }
+                    }
+
+                    if (myVideoView.isInPlaybackState() && event.getAction() == MotionEvent.ACTION_DOWN) {
                         if (mShowing) {
                             hide();
                         } else {
-                            showController(sDefaultTimeout);
+                            Message msg = mHandler.obtainMessage(PREPARE_SHOW_CONTROLLER);
+                            mHandler.sendMessageDelayed(msg, 500);
                         }
                     }
-                    return false;
+
+                    return true;
                 }
             });
             mPauseButton.requestFocus();
@@ -450,12 +478,18 @@ public class MediaPlayerControlView extends FrameLayout {
         }
     };
 
-    private GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener() {
+    private MotionEvent firstScrollEvent;
+    private MotionEvent lastScrollEvent;
+    private long lastOnScrollTime;
+
+    private GestureDetector.SimpleOnGestureListener gesturelistener = new GestureDetector.SimpleOnGestureListener() {
+
         @Override
         public boolean onDown(MotionEvent e) {
             Log.d("Gesture", "onDown");
             return false;
         }
+
 
         @Override
         public void onShowPress(MotionEvent e) {
@@ -470,11 +504,33 @@ public class MediaPlayerControlView extends FrameLayout {
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            Log.d("Gesture", "onScroll");
+            if (distanceX > 0)
+                mIsScrolling = 1;
+            else
+                mIsScrolling = -1;
+
+            int MAX_WIDTH = WindowSizeUtils.getWindowWidthSize(mContext);
+
+            if (e1 != null) {
+                firstScrollEvent = e1;
+                Log.d("Gesture", "first scroll");
+            }
+            if (firstScrollEvent != null) {
+                Log.d("Gesture", "onScroll firstScroll rawX = " + firstScrollEvent.getRawX() + " rawY = " + firstScrollEvent.getRawY());
+            }
+
+            if (lastScrollEvent != null) {
+                Log.d("Gesture", "onScroll lastScrollEvent rawX = " + lastScrollEvent.getRawX() + " rawY = " + lastScrollEvent.getRawY());
+            }
+            Log.d("Gesture", "onScroll current rawX = " + e2.getRawX() + " rawY = " + e2.getRawY());
+
             Log.d("Gesture", "onScroll" + distanceX);
             Log.d("Gesture", "onScroll" + distanceY);
+            Log.d("Gesture", "width % = " + distanceX / MAX_WIDTH);
+            Log.d("Gesture", "--------------------");
 
-
+            lastScrollEvent = e2;
+            lastOnScrollTime = new Date().getTime();
             return false;
         }
 
@@ -516,16 +572,35 @@ public class MediaPlayerControlView extends FrameLayout {
                         sendMessageDelayed(msg, 1000 - (pos % 1000));
                     }
                     break;
+                case PREPARE_SHOW_CONTROLLER:
+                    long timeSegment = new Date().getTime() - view.lastOnScrollTime;
+
+                    if (timeSegment < 500) break;
+                    view.showController(sDefaultTimeout);
+                    break;
             }
         }
     }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.d("touchListener", "dispatchTouchEvent");
-        GestureDetector mGestureDetector = new GestureDetector(mContext, listener);
-        mGestureDetector.onTouchEvent(ev);
-
-        return super.dispatchTouchEvent(ev);
-    }
 }
+/*
+* case 1
+* |--------------------------------------------------------------------------------------|
+*    C C  C
+*       T   S
+*       -----   = 500ms (T-S)
+*         ---   < 500ms (S-C)
+*
+*  C = lastOnScrollTime
+*  S - C < 500ms
+*
+*
+* case 2
+* |--------------------------------------------------------------------------------------|
+*    C
+*       T   S
+*       -----   = 500ms (T-S)
+*    --------   > 500ms (S-C)
+*
+*  C = lastOnScrollTime
+*  S - C > 500ms
+**/
