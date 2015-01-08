@@ -39,13 +39,14 @@ public class MediaPlayerControlView extends FrameLayout {
     private static final int FADE_OUT = 1;
     private static final int SHOW_PROGRESS = 2;
     private static final int PREPARE_SHOW_CONTROLLER = 3;
+    private static final int FASTFORWARD_SHOW_TEXTVIEW = 4;
 
     private Context mContext;
     private View mRoot;
     private ImageView mPauseButton, mReportButton, mShareButton;
     private MyVideoView myVideoView;
     private MySeekBar mSeekBar;
-    private TextView mCurrentTime, mEndTime;
+    private TextView mCurrentTime, mEndTime, showFastForward;
     private StringBuilder mFormatBuilder;
     private Formatter mFormatter;
     private LinearLayout mLinearLayout;
@@ -63,6 +64,8 @@ public class MediaPlayerControlView extends FrameLayout {
     private FrameLayout mShareFrameLayout;
     private FrameLayout mReportFrameLayout;
     private int touchButtonColor = getResources().getColor(R.color.peach);
+    private int showFastForwardTime,newSeekBarProgress;
+    private long newPosition;
 
     public MediaPlayerControlView(Context context) {
         super(context);
@@ -176,6 +179,7 @@ public class MediaPlayerControlView extends FrameLayout {
 
             myVideoView.setOnTouchListener(new OnTouchListener() {
                 private GestureDetector mGestureDetector = new GestureDetector(mContext, gesturelistener);
+
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
 
@@ -183,22 +187,15 @@ public class MediaPlayerControlView extends FrameLayout {
                     Log.d("touchListener", "on Touch ");
                     mGestureDetector.onTouchEvent(event);
 
-                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (myVideoView.isInPlaybackState() && event.getAction() == MotionEvent.ACTION_UP) {
                         Log.d("touchListener", "ACTION UP");
                         if (mIsScrolling != 0) {
-
-                            int percent = 30;
-                            int newSeekBarProgress = mSeekBar.getProgress() + percent * mIsScrolling;
-
-                            long duration = myVideoView.getDuration();
-                            long newPosition = (duration * newSeekBarProgress) / 1000L;
-
                             myVideoView.seekTo((int) newPosition);
                             mSeekBar.setProgress(newSeekBarProgress);
                             updateSeekBar();
 
-                            Log.d("debug", "newSeekBarProgress: "+ newSeekBarProgress + " duration: " + duration + " newPosition: " + newPosition);
-                            mIsScrolling  = 0;
+                            mIsScrolling = 0;
+                            showFastForward.setVisibility(View.GONE);
                         }
                     }
 
@@ -331,6 +328,7 @@ public class MediaPlayerControlView extends FrameLayout {
         mLinearLayoutSizeFixed = (LinearLayout) mRoot.findViewById(R.id.mLinearLayoutSizeFixed);
         mShareFrameLayout = (FrameLayout) mRoot.findViewById(R.id.mShareFrameLayout);
         mReportFrameLayout = (FrameLayout) mRoot.findViewById(R.id.mReportFrameLayout);
+        showFastForward = (TextView) mRoot.findViewById(R.id.showFastForward);
     }
 
     private int updateSeekBar() {
@@ -511,6 +509,26 @@ public class MediaPlayerControlView extends FrameLayout {
 
             int MAX_WIDTH = WindowSizeUtils.getWindowWidthSize(mContext);
 
+            //compute fast-forward from gesture to seekbar
+            int percent = 30;
+            newSeekBarProgress = mSeekBar.getProgress() + percent * mIsScrolling;
+            long duration = myVideoView.getDuration();
+            newPosition = (duration * newSeekBarProgress) / 1000L;
+
+            Log.d("debug", "------------------------");
+            Log.d("debug", "mSeekBar.getProgress(): " + mSeekBar.getProgress());
+            Log.d("debug", "newSeekBarProgress: " + newSeekBarProgress + " duration: " + duration + " newPosition: " + newPosition);
+            Log.d("debug", "------------------------");
+            showFastForwardTime = (int) ((newPosition + newSeekBarProgress) / 1000L);
+
+            if(showFastForwardTime==-1){
+                showFastForwardTime =showFastForwardTime * -1;
+            }
+
+            Log.d("debug", "showFastForward: " + showFastForwardTime);
+
+            showFastForward.setVisibility(View.VISIBLE);
+
             if (e1 != null) {
                 firstScrollEvent = e1;
                 Log.d("Gesture", "first scroll");
@@ -531,6 +549,10 @@ public class MediaPlayerControlView extends FrameLayout {
 
             lastScrollEvent = e2;
             lastOnScrollTime = new Date().getTime();
+
+            Message msg = mHandler.obtainMessage(FASTFORWARD_SHOW_TEXTVIEW);
+            mHandler.sendMessageDelayed(msg, 100);
+
             return false;
         }
 
@@ -577,6 +599,9 @@ public class MediaPlayerControlView extends FrameLayout {
 
                     if (timeSegment < 500) break;
                     view.showController(sDefaultTimeout);
+                    break;
+                case FASTFORWARD_SHOW_TEXTVIEW:
+                    view.showFastForward.setText("time:" + view.showFastForwardTime);
                     break;
             }
         }

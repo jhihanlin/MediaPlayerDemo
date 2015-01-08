@@ -50,6 +50,15 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/showFastForward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:visibility="gone" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
@@ -135,9 +144,9 @@
                         android:id="@+id/mPauseButton"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        android:layout_gravity="center"
                         android:src="@drawable/video_pause"
-                        android:visibility="visible"
-                        android:layout_gravity="center" />
+                        android:visibility="visible" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -179,13 +188,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="-40dp"
                     android:indeterminate="false"
                     android:progressDrawable="@drawable/custom_seek_bar"
                     android:thumb="@drawable/bar"
                     android:thumbOffset="5dp"
-                    android:visibility="visible"
-                    android:layout_marginBottom="-40dp"
-                    android:layout_gravity="bottom" />
+                    android:visibility="visible" />
 
             </FrameLayout>
 

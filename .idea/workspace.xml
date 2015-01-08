@@ -6,7 +6,7 @@
         <option name="logLevel" value="verbose" />
         <option name="logMessagePattern" value="" />
         <option name="logTagPattern" value="Gesture" />
-        <option name="name" value="app: com.example.mediaplayerdemo" />
+        <option name="name" value="Gesture" />
         <option name="packageNamePattern" value="com.example.mediaplayerdemo" />
         <option name="pid" value="" />
       </filter>
@@ -24,6 +24,14 @@
         <option name="logTagPattern" value="debug" />
         <option name="name" value="debug" />
         <option name="packageNamePattern" value="" />
+        <option name="pid" value="" />
+      </filter>
+      <filter>
+        <option name="logLevel" value="debug" />
+        <option name="logMessagePattern" value="" />
+        <option name="logTagPattern" value="" />
+        <option name="name" value="app: com.example.mediaplayerdemo" />
+        <option name="packageNamePattern" value="com.example.mediaplayerdemo" />
         <option name="pid" value="" />
       </filter>
     </filters>
@@ -78,32 +86,32 @@
       <file leaf-file-name="MediaPlayerControlView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/controller/MediaPlayerControlView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.8167808" vertical-offset="3387" max-vertical-offset="8550">
-              <caret line="197" column="44" selection-start-line="197" selection-start-column="44" selection-end-line="197" selection-end-column="44" />
+            <state vertical-scroll-proportion="-0.4032634" vertical-offset="7463" max-vertical-offset="8925">
+              <caret line="527" column="10" selection-start-line="527" selection-start-column="10" selection-end-line="527" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onFinishInflate#0;class#MediaPlayerControlView#0" expanded="false" />
-                <element signature="e#4754#4755#0" expanded="true" />
-                <element signature="e#4809#4810#0" expanded="true" />
-                <element signature="e#4895#5480#0" expanded="true" />
-                <element signature="e#5465#5466#0" expanded="true" />
-                <element signature="e#5517#5870#0" expanded="true" />
-                <element signature="e#5855#5856#0" expanded="true" />
-                <element signature="e#7954#8617#0" expanded="true" />
-                <element signature="e#8602#8603#0" expanded="true" />
-                <element signature="e#8736#9797#0" expanded="true" />
-                <element signature="e#9782#9783#0" expanded="true" />
-                <element signature="e#9918#10989#0" expanded="true" />
-                <element signature="e#10974#10975#0" expanded="true" />
+                <element signature="e#4917#4918#0" expanded="true" />
+                <element signature="e#4972#4973#0" expanded="true" />
+                <element signature="e#5058#5643#0" expanded="true" />
+                <element signature="e#5628#5629#0" expanded="true" />
+                <element signature="e#5680#6033#0" expanded="true" />
+                <element signature="e#6018#6019#0" expanded="true" />
+                <element signature="e#7764#8427#0" expanded="true" />
+                <element signature="e#8412#8413#0" expanded="true" />
+                <element signature="e#8546#9607#0" expanded="true" />
+                <element signature="e#9592#9593#0" expanded="true" />
+                <element signature="e#9728#10799#0" expanded="true" />
+                <element signature="e#10784#10785#0" expanded="true" />
                 <element signature="method#stringForTime#0;class#MediaPlayerControlView#0" expanded="false" />
                 <element signature="method#hideController#0;class#MediaPlayerControlView#0" expanded="false" />
                 <element signature="method#updatePausePlay#0;class#MediaPlayerControlView#0" expanded="false" />
-                <element signature="e#17516#17627#0" expanded="true" />
-                <element signature="e#17620#17621#0" expanded="true" />
-                <element signature="e#18457#18458#0" expanded="true" />
-                <element signature="e#18512#18513#0" expanded="true" />
-                <element signature="e#20029#20030#0" expanded="true" />
-                <element signature="e#20084#20085#0" expanded="true" />
+                <element signature="e#17405#17516#0" expanded="true" />
+                <element signature="e#17509#17510#0" expanded="true" />
+                <element signature="e#18346#18347#0" expanded="true" />
+                <element signature="e#18401#18402#0" expanded="true" />
+                <element signature="e#21004#21005#0" expanded="true" />
+                <element signature="e#21059#21060#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,13 +141,13 @@
       </file>
       <file leaf-file-name="controller_media_control.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.115385" vertical-offset="2058" max-vertical-offset="3165">
-              <caret line="153" column="21" selection-start-line="153" selection-start-column="21" selection-end-line="153" selection-end-column="21" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.4150944" vertical-offset="674" max-vertical-offset="3300">
+              <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
               <folding />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer">
+          <provider editor-type-id="android-designer">
             <state />
           </provider>
         </entry>
@@ -1621,7 +1629,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1439" height="834" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1635,16 +1643,16 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17322835" sideWeight="0.11285266" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15891196" sideWeight="0.113871634" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5410072" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11142062" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329277" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32999283" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17322835" sideWeight="0.88557994" order="0" side_tool="false" content_ui="combo" x="513" y="153" width="414" height="550" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15891196" sideWeight="0.88612837" order="0" side_tool="false" content_ui="combo" x="513" y="153" width="414" height="550" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.021582734" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1784,27 +1792,27 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onFinishInflate#0;class#MediaPlayerControlView#0" expanded="false" />
-            <element signature="e#4754#4755#0" expanded="true" />
-            <element signature="e#4809#4810#0" expanded="true" />
-            <element signature="e#4895#5480#0" expanded="true" />
-            <element signature="e#5465#5466#0" expanded="true" />
-            <element signature="e#5517#5870#0" expanded="true" />
-            <element signature="e#5855#5856#0" expanded="true" />
-            <element signature="e#7954#8617#0" expanded="true" />
-            <element signature="e#8602#8603#0" expanded="true" />
-            <element signature="e#8736#9797#0" expanded="true" />
-            <element signature="e#9782#9783#0" expanded="true" />
-            <element signature="e#9918#10989#0" expanded="true" />
-            <element signature="e#10974#10975#0" expanded="true" />
+            <element signature="e#4917#4918#0" expanded="true" />
+            <element signature="e#4972#4973#0" expanded="true" />
+            <element signature="e#5058#5643#0" expanded="true" />
+            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5680#6033#0" expanded="true" />
+            <element signature="e#6018#6019#0" expanded="true" />
+            <element signature="e#7764#8427#0" expanded="true" />
+            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="e#8546#9607#0" expanded="true" />
+            <element signature="e#9592#9593#0" expanded="true" />
+            <element signature="e#9728#10799#0" expanded="true" />
+            <element signature="e#10784#10785#0" expanded="true" />
             <element signature="method#stringForTime#0;class#MediaPlayerControlView#0" expanded="false" />
             <element signature="method#hideController#0;class#MediaPlayerControlView#0" expanded="false" />
             <element signature="method#updatePausePlay#0;class#MediaPlayerControlView#0" expanded="false" />
-            <element signature="e#17516#17627#0" expanded="true" />
-            <element signature="e#17620#17621#0" expanded="true" />
-            <element signature="e#18457#18458#0" expanded="true" />
-            <element signature="e#18512#18513#0" expanded="true" />
-            <element signature="e#20029#20030#0" expanded="true" />
-            <element signature="e#20084#20085#0" expanded="true" />
+            <element signature="e#17405#17516#0" expanded="true" />
+            <element signature="e#17509#17510#0" expanded="true" />
+            <element signature="e#18346#18347#0" expanded="true" />
+            <element signature="e#18401#18402#0" expanded="true" />
+            <element signature="e#21004#21005#0" expanded="true" />
+            <element signature="e#21059#21060#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1891,27 +1899,27 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onFinishInflate#0;class#MediaPlayerControlView#0" expanded="false" />
-            <element signature="e#4754#4755#0" expanded="true" />
-            <element signature="e#4809#4810#0" expanded="true" />
-            <element signature="e#4895#5480#0" expanded="true" />
-            <element signature="e#5465#5466#0" expanded="true" />
-            <element signature="e#5517#5870#0" expanded="true" />
-            <element signature="e#5855#5856#0" expanded="true" />
-            <element signature="e#7954#8617#0" expanded="true" />
-            <element signature="e#8602#8603#0" expanded="true" />
-            <element signature="e#8736#9797#0" expanded="true" />
-            <element signature="e#9782#9783#0" expanded="true" />
-            <element signature="e#9918#10989#0" expanded="true" />
-            <element signature="e#10974#10975#0" expanded="true" />
+            <element signature="e#4917#4918#0" expanded="true" />
+            <element signature="e#4972#4973#0" expanded="true" />
+            <element signature="e#5058#5643#0" expanded="true" />
+            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5680#6033#0" expanded="true" />
+            <element signature="e#6018#6019#0" expanded="true" />
+            <element signature="e#7764#8427#0" expanded="true" />
+            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="e#8546#9607#0" expanded="true" />
+            <element signature="e#9592#9593#0" expanded="true" />
+            <element signature="e#9728#10799#0" expanded="true" />
+            <element signature="e#10784#10785#0" expanded="true" />
             <element signature="method#stringForTime#0;class#MediaPlayerControlView#0" expanded="false" />
             <element signature="method#hideController#0;class#MediaPlayerControlView#0" expanded="false" />
             <element signature="method#updatePausePlay#0;class#MediaPlayerControlView#0" expanded="false" />
-            <element signature="e#17516#17627#0" expanded="true" />
-            <element signature="e#17620#17621#0" expanded="true" />
-            <element signature="e#18457#18458#0" expanded="true" />
-            <element signature="e#18512#18513#0" expanded="true" />
-            <element signature="e#20029#20030#0" expanded="true" />
-            <element signature="e#20084#20085#0" expanded="true" />
+            <element signature="e#17405#17516#0" expanded="true" />
+            <element signature="e#17509#17510#0" expanded="true" />
+            <element signature="e#18346#18347#0" expanded="true" />
+            <element signature="e#18401#18402#0" expanded="true" />
+            <element signature="e#21004#21005#0" expanded="true" />
+            <element signature="e#21059#21060#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1979,27 +1987,27 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onFinishInflate#0;class#MediaPlayerControlView#0" expanded="false" />
-            <element signature="e#4754#4755#0" expanded="true" />
-            <element signature="e#4809#4810#0" expanded="true" />
-            <element signature="e#4895#5480#0" expanded="true" />
-            <element signature="e#5465#5466#0" expanded="true" />
-            <element signature="e#5517#5870#0" expanded="true" />
-            <element signature="e#5855#5856#0" expanded="true" />
-            <element signature="e#7954#8617#0" expanded="true" />
-            <element signature="e#8602#8603#0" expanded="true" />
-            <element signature="e#8736#9797#0" expanded="true" />
-            <element signature="e#9782#9783#0" expanded="true" />
-            <element signature="e#9918#10989#0" expanded="true" />
-            <element signature="e#10974#10975#0" expanded="true" />
+            <element signature="e#4917#4918#0" expanded="true" />
+            <element signature="e#4972#4973#0" expanded="true" />
+            <element signature="e#5058#5643#0" expanded="true" />
+            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5680#6033#0" expanded="true" />
+            <element signature="e#6018#6019#0" expanded="true" />
+            <element signature="e#7764#8427#0" expanded="true" />
+            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="e#8546#9607#0" expanded="true" />
+            <element signature="e#9592#9593#0" expanded="true" />
+            <element signature="e#9728#10799#0" expanded="true" />
+            <element signature="e#10784#10785#0" expanded="true" />
             <element signature="method#stringForTime#0;class#MediaPlayerControlView#0" expanded="false" />
             <element signature="method#hideController#0;class#MediaPlayerControlView#0" expanded="false" />
             <element signature="method#updatePausePlay#0;class#MediaPlayerControlView#0" expanded="false" />
-            <element signature="e#17516#17627#0" expanded="true" />
-            <element signature="e#17620#17621#0" expanded="true" />
-            <element signature="e#18457#18458#0" expanded="true" />
-            <element signature="e#18512#18513#0" expanded="true" />
-            <element signature="e#20029#20030#0" expanded="true" />
-            <element signature="e#20084#20085#0" expanded="true" />
+            <element signature="e#17405#17516#0" expanded="true" />
+            <element signature="e#17509#17510#0" expanded="true" />
+            <element signature="e#18346#18347#0" expanded="true" />
+            <element signature="e#18401#18402#0" expanded="true" />
+            <element signature="e#21004#21005#0" expanded="true" />
+            <element signature="e#21059#21060#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2190,17 +2198,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.115385" vertical-offset="2058" max-vertical-offset="3165">
-          <caret line="153" column="21" selection-start-line="153" selection-start-column="21" selection-end-line="153" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Developer/Tool/adt-bundle-mac-x86_64-20140702/sdk/sources/android-19/android/view/GestureDetector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33212996" vertical-offset="208" max-vertical-offset="9870">
@@ -2217,34 +2214,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/controller_media_control.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.4150944" vertical-offset="674" max-vertical-offset="3300">
+          <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mediaplayerdemo/controller/MediaPlayerControlView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8167808" vertical-offset="3387" max-vertical-offset="8550">
-          <caret line="197" column="44" selection-start-line="197" selection-start-column="44" selection-end-line="197" selection-end-column="44" />
+        <state vertical-scroll-proportion="-0.4032634" vertical-offset="7463" max-vertical-offset="8925">
+          <caret line="527" column="10" selection-start-line="527" selection-start-column="10" selection-end-line="527" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onFinishInflate#0;class#MediaPlayerControlView#0" expanded="false" />
-            <element signature="e#4754#4755#0" expanded="true" />
-            <element signature="e#4809#4810#0" expanded="true" />
-            <element signature="e#4895#5480#0" expanded="true" />
-            <element signature="e#5465#5466#0" expanded="true" />
-            <element signature="e#5517#5870#0" expanded="true" />
-            <element signature="e#5855#5856#0" expanded="true" />
-            <element signature="e#7954#8617#0" expanded="true" />
-            <element signature="e#8602#8603#0" expanded="true" />
-            <element signature="e#8736#9797#0" expanded="true" />
-            <element signature="e#9782#9783#0" expanded="true" />
-            <element signature="e#9918#10989#0" expanded="true" />
-            <element signature="e#10974#10975#0" expanded="true" />
+            <element signature="e#4917#4918#0" expanded="true" />
+            <element signature="e#4972#4973#0" expanded="true" />
+            <element signature="e#5058#5643#0" expanded="true" />
+            <element signature="e#5628#5629#0" expanded="true" />
+            <element signature="e#5680#6033#0" expanded="true" />
+            <element signature="e#6018#6019#0" expanded="true" />
+            <element signature="e#7764#8427#0" expanded="true" />
+            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="e#8546#9607#0" expanded="true" />
+            <element signature="e#9592#9593#0" expanded="true" />
+            <element signature="e#9728#10799#0" expanded="true" />
+            <element signature="e#10784#10785#0" expanded="true" />
             <element signature="method#stringForTime#0;class#MediaPlayerControlView#0" expanded="false" />
             <element signature="method#hideController#0;class#MediaPlayerControlView#0" expanded="false" />
             <element signature="method#updatePausePlay#0;class#MediaPlayerControlView#0" expanded="false" />
-            <element signature="e#17516#17627#0" expanded="true" />
-            <element signature="e#17620#17621#0" expanded="true" />
-            <element signature="e#18457#18458#0" expanded="true" />
-            <element signature="e#18512#18513#0" expanded="true" />
-            <element signature="e#20029#20030#0" expanded="true" />
-            <element signature="e#20084#20085#0" expanded="true" />
+            <element signature="e#17405#17516#0" expanded="true" />
+            <element signature="e#17509#17510#0" expanded="true" />
+            <element signature="e#18346#18347#0" expanded="true" />
+            <element signature="e#18401#18402#0" expanded="true" />
+            <element signature="e#21004#21005#0" expanded="true" />
+            <element signature="e#21059#21060#0" expanded="true" />
           </folding>
         </state>
       </provider>
